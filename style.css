@@ -191,41 +191,125 @@ td strong {
     background: rgba(0, 0, 0, 0.2) !important;
     font-size: 1.1rem;
 }
+/* --- CLASSIFICA DEFINITIVA MONACI'S LEAGUE (DA CANVA) --- */
+.kl-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 0 15px;
+}
 
-/* --- COLORI IDENTITÀ PERSONALIZZATI DELLE SQUADRE --- */
+.kl-main-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    color: var(--gold);
+}
 
-/* 1. Calabroni FC (Base Blu Chiaro e Striscia Blu Scuro) */
-.team-calabroni { background: #87CEEB; }
-.team-calabroni .team-name { border-left: 6px solid #00008B; }
-.team-calabroni span, .team-calabroni td { color: #000 !important; }
+.kl-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px; /* Stacco netto tra le righe */
+    background: transparent;
+}
 
-/* 2. Grizzly FC (Base Sabbia e Striscia Arancione Chiaro) */
-.team-grizzly { background: #E6D5B8; }
-.team-grizzly .team-name { border-left: 6px solid #FFB37C; }
-.team-grizzly span, .team-grizzly td { color: #000 !important; }
+/* Intestazioni rialzate e leggibili (Scritte NERE su fondo chiaro) */
+.kl-table th {
+    background: #e0e0e0; /* Sfondo chiaro per far risaltare il testo */
+    color: #000000 !important; /* Testo NERO richiesto */
+    font-size: 0.9rem;
+    padding: 12px 10px;
+    text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ccc;
+}
 
-/* 3. Dark Knights (Base Grigio Scuro e Striscia Nero Antracite) */
-.team-darkknights { background: #444; }
-.team-darkknights .team-name { border-left: 6px solid #1a1a1a; }
-.team-darkknights span, .team-darkknights td { color: #fff !important; }
+.kl-table td {
+    padding: 12px 10px;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+}
 
-/* 4. Polar FC (Base Bianca e Striscia Celeste) */
+/* Quadratini delle Posizioni (POS) */
+.pos-num {
+    width: 50px;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+/* Prime due posizioni VERDI */
+.pos-semi .pos-num { 
+    background: #00ff44 !important; 
+    color: #000 !important; 
+}
+/* Dalla terza alla sesta OCRA / ORO TRAP */
+.pos-quarti .pos-num { 
+    background: #c8963e !important; 
+    color: #000 !important; 
+}
+
+/* Colonna Nome Squadra (con il Logo e la Sigla a 3 lettere) */
+.team-name {
+    text-align: left !important;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-left: 20px !important;
+}
+
+.team-name img {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+}
+
+.team-name span {
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+/* Colonna dei Punti (PT) */
+.pt-val {
+    background: rgba(0, 0, 0, 0.2) !important;
+    font-size: 1.1rem;
+}
+
+/* --- COLORI IDENTITÀ ESATTI DA GRAFICA CANVA --- */
+
+/* 1. Calabroni FC (Blu Reale e Striscia Blu Notte) */
+.team-calabroni { background: #103cd6; }
+.team-calabroni .team-name { border-left: 6px solid #0a1f6a; }
+.team-calabroni span, .team-calabroni td { color: #ffffff !important; }
+
+/* 2. Grizzly FC (Oro/Sabbia e Striscia Ambrata) */
+.team-grizzly { background: #b89333; }
+.team-grizzly .team-name { border-left: 6px solid #82641c; }
+.team-grizzly span, .team-grizzly td { color: #ffffff !important; }
+
+/* 3. Dark Knights (Nero Antracite e Striscia Nera Opaca) */
+.team-darkknights { background: #1e2124; }
+.team-darkknights .team-name { border-left: 6px solid #111214; }
+.team-darkknights span, .team-darkknights td { color: #ffffff !important; }
+
+/* 4. Polar FC (Bianco e Striscia Celeste Chiaro) */
 .team-polar { background: #ffffff; }
-.team-polar .team-name { border-left: 6px solid #00bfff; }
-.team-polar span, .team-polar td { color: #000 !important; }
+.team-polar .team-name { border-left: 6px solid #a5f2ff; }
+.team-polar span, .team-polar td { color: #000000 !important; }
 
-/* 5. FC Birrareal (Base Verde Chiaro e Striscia Verde Scuro) */
-.team-birrareal { background: #90EE90; }
-.team-birrareal .team-name { border-left: 6px solid #006400; }
-.team-birrareal span, .team-birrareal td { color: #000 !important; }
+/* 5. FC Birrareal (Verde Prato e Striscia Verde Foresta) */
+.team-birrareal { background: #287819; }
+.team-birrareal .team-name { border-left: 6px solid #16450d; }
+.team-birrareal span, .team-birrareal td { color: #ffffff !important; }
 
-/* 6. King Lions FC (Base Rossa e Striscia Rosso Scuro) */
-.team-kinglions { background: #FF4D4D; }
-.team-kinglions .team-name { border-left: 6px solid #8B0000; }
-.team-kinglions span, .team-kinglions td { color: #fff !important; }
+/* 6. King Lions FC (Rosso Fuoco e Striscia Bordeaux) */
+.team-kinglions { background: #d61818; }
+.team-kinglions .team-name { border-left: 6px solid #730909; }
+.team-kinglions span, .team-kinglions td { color: #ffffff !important; }
 
 
-/* Legenda richiesta sotto la tabella */
+/* Legenda */
 .kl-legenda {
     display: flex;
     justify-content: center;
