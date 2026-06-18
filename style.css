@@ -111,34 +111,139 @@ th, td {
 td strong {
     color: white;
 }
-/* --- COLORI IDENTITÀ SQUADRE --- */
+/* --- CLASSIFICA DEFINITIVA STILE KINGS LEAGUE --- */
+.kl-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 0 15px;
+}
 
-/* Calabroni FC (Blu Chiaro e Blu Scuro) */
-.team-calabroni { background: #87CEEB; color: #000; }
+.kl-main-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    color: var(--gold);
+}
+
+.kl-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px; /* Crea lo stacco netto tra le righe delle squadre */
+    background: transparent;
+}
+
+.kl-table th {
+    color: #888;
+    font-size: 0.85rem;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.kl-table td {
+    padding: 12px 10px;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Quadratini delle Posizioni (POS) a sinistra */
+.pos-num {
+    width: 50px;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+/* Prime due posizioni VERDI */
+.pos-semi .pos-num { 
+    background: #00ff44 !important; 
+    color: #000 !important; 
+}
+/* Dalla terza alla sesta OCRA / ORO TRAP */
+.pos-quarti .pos-num { 
+    background: #c8963e !important; 
+    color: #000 !important; 
+}
+
+/* Colonna Nome Squadra (con il Logo e la Sigla a 3 lettere) */
+.team-name {
+    text-align: left !important;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-left: 20px !important;
+}
+
+.team-name img {
+    height: 30px;
+    width: 30px;
+    object-fit: contain;
+}
+
+.team-name span {
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+/* Colonna dei Punti (PT) */
+.pt-val {
+    background: rgba(0, 0, 0, 0.2) !important;
+    font-size: 1.1rem;
+}
+
+/* --- COLORI IDENTITÀ PERSONALIZZATI DELLE SQUADRE --- */
+
+/* 1. Calabroni FC (Base Blu Chiaro e Striscia Blu Scuro) */
+.team-calabroni { background: #87CEEB; }
 .team-calabroni .team-name { border-left: 6px solid #00008B; }
-.team-calabroni span, .team-calabroni td { color: #000; }
+.team-calabroni span, .team-calabroni td { color: #000 !important; }
 
-/* Grizzly FC (Sabbia e Arancione Chiaro) */
-.team-grizzly { background: #E6D5B8; color: #000; }
+/* 2. Grizzly FC (Base Sabbia e Striscia Arancione Chiaro) */
+.team-grizzly { background: #E6D5B8; }
 .team-grizzly .team-name { border-left: 6px solid #FFB37C; }
-.team-grizzly span, .team-grizzly td { color: #000; }
+.team-grizzly span, .team-grizzly td { color: #000 !important; }
 
-/* Dark Knights (Grigio e Grigio Scuro) */
-.team-darkknights { background: #444; color: #fff; }
+/* 3. Dark Knights (Base Grigio Scuro e Striscia Nero Antracite) */
+.team-darkknights { background: #444; }
 .team-darkknights .team-name { border-left: 6px solid #1a1a1a; }
-.team-darkknights span, .team-darkknights td { color: #fff; }
+.team-darkknights span, .team-darkknights td { color: #fff !important; }
 
-/* Polar FC (Bianco e Celeste) */
-.team-polar { background: #ffffff; color: #000; }
+/* 4. Polar FC (Base Bianca e Striscia Celeste) */
+.team-polar { background: #ffffff; }
 .team-polar .team-name { border-left: 6px solid #00bfff; }
-.team-polar span, .team-polar td { color: #000; }
+.team-polar span, .team-polar td { color: #000 !important; }
 
-/* FC Birrareal (Verde Chiaro e Verde Scuro) */
-.team-birrareal { background: #90EE90; color: #000; }
+/* 5. FC Birrareal (Base Verde Chiaro e Striscia Verde Scuro) */
+.team-birrareal { background: #90EE90; }
 .team-birrareal .team-name { border-left: 6px solid #006400; }
-.team-birrareal span, .team-birrareal td { color: #000; }
+.team-birrareal span, .team-birrareal td { color: #000 !important; }
 
-/* King Lions FC (Rosso e Rosso Scuro) */
-.team-kinglions { background: #FF4D4D; color: #fff; }
+/* 6. King Lions FC (Base Rossa e Striscia Rosso Scuro) */
+.team-kinglions { background: #FF4D4D; }
 .team-kinglions .team-name { border-left: 6px solid #8B0000; }
-.team-kinglions span, .team-kinglions td { color: #fff; }
+.team-kinglions span, .team-kinglions td { color: #fff !important; }
+
+
+/* Legenda richiesta sotto la tabella */
+.kl-legenda {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.box-color {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 8px;
+    vertical-align: middle;
+    border-radius: 2px;
+}
+.semi { background: #00ff44; }
+.quarti { background: #c8963e; }
