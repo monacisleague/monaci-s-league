@@ -135,11 +135,12 @@ td strong {
 }
 
 .kl-table th {
-    color: #888;
-    font-size: 0.85rem;
+    background: #f4f4f4; /* Sfondo chiaro per la testata */
+    color: #000000 !important; /* Testo NERO super leggibile */
+    font-size: 0.9rem;
     padding: 10px;
     text-align: center;
-    font-weight: bold;
+    font-weight: 900;
     text-transform: uppercase;
 }
 
