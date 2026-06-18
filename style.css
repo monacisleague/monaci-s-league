@@ -133,10 +133,8 @@ td strong {
     border-spacing: 0 8px; /* Crea lo stacco netto tra le righe delle squadre */
     background: transparent;
 }
-
 .kl-table th {
-    background: #f4f4f4; /* Sfondo chiaro per la testata */
-    color: #000000 !important; /* Testo NERO super leggibile */
+    color: #ffffff !important; /* Testo BIANCO splendente */
     font-size: 0.9rem;
     padding: 10px;
     text-align: center;
