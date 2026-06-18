@@ -1,16 +1,98 @@
+:root {
+    --gold: #F9A608;
+    --bg: #000;
+    --card: #111;
+}
 
-:root{--gold:#F9A608;--bg:#000;--card:#111;}
-body{margin:0;background:var(--bg);color:white;font-family:Arial,sans-serif}
-header{border-bottom:2px solid var(--gold);}
-.container{max-width:1200px;margin:auto;padding:15px}
-.nav{display:flex;justify-content:space-between;align-items:center}
-.brand{color:var(--gold);font-weight:bold;font-size:1.5rem}
-nav a{color:white;text-decoration:none;margin-left:20px}
-.hero{text-align:center;padding:80px 20px}
-.hero h1{color:var(--gold);font-size:3rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;padding:20px}
-.card{background:var(--card);padding:20px;border:1px solid #333;border-radius:12px}
-h2{color:var(--gold)}
-table{width:100%;border-collapse:collapse}
-th,td{padding:10px;border-bottom:1px solid #333}
-th{background:var(--gold);color:black}
+body {
+    margin: 0;
+    background: var(--bg);
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    border-bottom: 2px solid var(--gold);
+    padding: 10px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px;
+}
+
+/* Questa regola centra perfettamente il logo e il menu */
+.nav {
+    display: flex;
+    flex-direction: column; /* Mette il menu sotto al logo */
+    align-items: center;    /* Centra tutto orizzontalmente */
+    gap: 15px;              /* Crea lo spazio giusto tra logo e menu */
+}
+
+.brand {
+    color: var(--gold);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Centra i link del menu e li distanzia in modo ordinato */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: var(--gold); /* Cambia colore in oro quando ci passi sopra con il mouse */
+}
+
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    color: var(--gold);
+    font-size: 3rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: var(--card);
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 12px;
+}
+
+h2 {
+    color: var(--gold);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+th {
+    background: var(--gold);
+    color: black;
+}
