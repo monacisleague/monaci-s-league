@@ -492,8 +492,7 @@ td strong {
 }
 .semi { background: #00ff44; }
 .quarti { background: #ffa800; } /* Colore Quarti Legenda #ffa800 */
-
-/* --- REGOLE SPECIFICHE PER DISPOSITIVI MOBILI --- */
+/* --- REGOLE SPECIFICHE PER DISPOSITIVI MOBILI (CON FIX GRASSETTO) --- */
 @media screen and (max-width: 480px) {
     .kl-main-title {
         font-size: 2rem;
@@ -502,10 +501,12 @@ td strong {
     .kl-table th, .kl-table td {
         padding: 8px 5px;
         font-size: 0.85rem;
+        font-weight: 900 !important; /* Forza il grassetto pesante su tutte le celle */
     }
     .pos-num {
         width: 35px;
         font-size: 1rem;
+        font-weight: 900 !important;
     }
     .team-name {
         gap: 8px;
@@ -517,9 +518,11 @@ td strong {
     }
     .team-name span {
         font-size: 0.9rem;
+        font-weight: 900 !important; /* Forza il grassetto pesante sulle sigle delle squadre (CAL, GRI, ecc.) */
     }
     .pt-val {
         font-size: 0.95rem;
+        font-weight: 900 !important;
     }
     .kl-legenda {
         font-size: 0.85rem;
