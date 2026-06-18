@@ -96,3 +96,18 @@ th {
     background: var(--gold);
     color: black;
 }
+table {
+    margin-top: 20px;
+    background: var(--card);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    text-align: center;
+    padding: 12px;
+}
+
+td strong {
+    color: white;
+}
