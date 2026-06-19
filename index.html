@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monaci's League - Home</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Allineamento per i loghi nella classifica della home */
+        .home-ranked-team {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 8px 0;
+        }
+        .home-ranked-team img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+    </style>
 </head>
 <body>
 
@@ -42,18 +56,30 @@
             <div class="home-card">
                 <h3>Ultimi Risultati (Giornata 2)</h3>
                 <div class="card-content">
-                    <p>Calabroni FC 3-2 d.t.s. Birrareal FC</p>
-                    <p>King Lions FC 2-3 d.t.s. Grizzly FC</p>
-                    <p>Dark Knights 4-1 Polar FC</p>
+                    <p>Calabroni FC 11-11 (vince d.c.r.) Birrareal FC</p>
+                    <p>King Lions FC 14-15 d.t.s. Grizzly FC</p>
+                    <p>Dark Knights 14-14 (vince d.c.r.) Polar FC</p>
                 </div>
             </div>
 
             <div class="home-card">
                 <h3>Classifica (Top 3)</h3>
-                <div class="card-content ordered-list">
-                    <p>1. KING LIONS FC - 7 pt</p>
-                    <p>2. CALABRONI FC - 5 pt</p>
-                    <p>3. GRIZZLY FC - 4 pt</p>
+                <div class="card-content">
+                    <div class="home-ranked-team">
+                        <span>1. </span>
+                        <img src="king-lions.png" alt="King Lions">
+                        <span>KING LIONS FC - 7 pt</span>
+                    </div>
+                    <div class="home-ranked-team">
+                        <span>2. </span>
+                        <img src="calabroni.png" alt="Calabroni">
+                        <span>CALABRONI FC - 5 pt</span>
+                    </div>
+                    <div class="home-ranked-team">
+                        <span>3. </span>
+                        <img src="grizzly.png" alt="Grizzly">
+                        <span>GRIZZLY FC - 4 pt</span>
+                    </div>
                 </div>
             </div>
 
