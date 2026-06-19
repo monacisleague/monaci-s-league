@@ -1,52 +1,36 @@
+/* ==========================================================================
+   1. REGOLAZIONI GENERALI E VARIABILI DEL SITO
+   ========================================================================== */
 :root {
-    --gold: #F9A608;
-    --bg: #000;
-    --card: #111;
+    --gold: #ffa800;
+    --dark-bg: #0d0d0d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    background: var(--bg);
-    color: white;
-    font-family: Arial, sans-serif;
-}
-
-header {
-    border-bottom: 2px solid var(--gold);
-    padding: 10px 0;
+    background-color: var(--dark-bg);
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
 }
 
 .container {
     max-width: 1200px;
-    margin: auto;
-    padding: 15px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-/* Questa regola centra perfettamente il logo e il menu */
-.nav {
-    display: flex;
-    flex-direction: column; /* Mette il menu sotto al logo */
-    align-items: center;    /* Centra tutto orizzontalmente */
-    gap: 15px;              /* Crea lo spazio giusto tra logo e menu */
-}
-
-.brand {
-    color: var(--gold);
-    font-weight: bold;
-    font-size: 1.5rem;
-}
-
-/* Centra i link del menu e li distanzia in modo ordinato */
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-}
-
-/* --- NAVIGAZIONE GENERALE (PC) --- */
+/* ==========================================================================
+   2. NAVIGAZIONE (MENU A TENDINA PC + MOBILE)
+   ========================================================================== */
 header {
     background: #111;
-    border-bottom: 2px solid var(--gold, #ffa800);
+    border-bottom: 2px solid #ffa800;
     padding: 10px 0;
     position: sticky;
     top: 0;
@@ -61,6 +45,7 @@ header {
     margin: 0 auto;
     padding: 0 15px;
     position: relative;
+    box-sizing: border-box;
 }
 
 .brand {
@@ -70,9 +55,16 @@ header {
     letter-spacing: 1px;
 }
 
+/* Menu in linea visibile su PC */
 .nav-menu {
-    display: flex;
+    display: flex !important; 
+    flex-direction: row;
     gap: 20px;
+    position: static;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    width: auto;
 }
 
 .nav-menu a {
@@ -88,302 +80,16 @@ header {
     color: #ffa800;
 }
 
-/* Nascondiamo i controlli mobile su PC */
+/* Nascondi controlli mobile su PC */
 .menu-toggle, .hamburger {
-    display: none;
+    display: none !important;
 }
 
-/* --- TRASFORMAZIONE IN MENU A TENDINA (MOBILE) --- */
-@media screen and (max-width: 768px) {
-    .hamburger {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        cursor: pointer;
-        z-index: 1010;
-    }
-
-    .hamburger span {
-        display: block;
-        width: 28px;
-        height: 3px;
-        background: #fff;
-        border-radius: 2px;
-        transition: 0.3s;
-    }
-
-    /* La Tendina che si apre dall'alto */
-    .nav-menu {
-        display: none; /* Nascondi di base */
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: #111;
-        border-bottom: 3px solid #ffa800;
-        padding: 20px 0;
-        gap: 15px;
-        text-align: center;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        z-index: 1005;
-    }
-
-    .nav-menu a {
-        display: block;
-        padding: 10px 0;
-        font-size: 1.2rem;
-    }
-
-    /* Logica di apertura della tendina al click */
-    .menu-toggle:checked ~ .nav-menu {
-        display: flex; /* Mostra la tendina quando cliccato */
-    }
-
-    /* Animazione dell'hamburger che diventa una "X" quando si apre */
-    .menu-toggle:checked ~ .hamburger span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 6deg);
-    }
-    .menu-toggle:checked ~ .hamburger span:nth-child(2) {
-        opacity: 0;
-    }
-    .menu-toggle:checked ~ .hamburger span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -6deg);
-    }
-
-    .menu-toggle {
-        display: none;
-    }
-}
-
-nav a:hover {
-    color: var(--gold); /* Cambia colore in oro quando ci passi sopra con il mouse */
-}
-
-.hero {
-    text-align: center;
-    padding: 80px 20px;
-}
-
-.hero h1 {
-    color: var(--gold);
-    font-size: 3rem;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
-
-.card {
-    background: var(--card);
-    padding: 20px;
-    border: 1px solid #333;
-    border-radius: 12px;
-}
-
-h2 {
-    color: var(--gold);
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 10px;
-    border-bottom: 1px solid #333;
-}
-
-th {
-    background: var(--gold);
-    color: black;
-}
-table {
-    margin-top: 20px;
-    background: var(--card);
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-th, td {
-    text-align: center;
-    padding: 12px;
-}
-
-td strong {
-    color: white;
-}
-/* --- CLASSIFICA DEFINITIVA STILE KINGS LEAGUE --- */
+/* ==========================================================================
+   3. STRUTTURA CLASSIFICA MONACI'S LEAGUE
+   ========================================================================== */
 .kl-container {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 0 15px;
-}
-
-.kl-main-title {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin-bottom: 25px;
-    color: var(--gold);
-}
-
-.kl-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 8px; /* Crea lo stacco netto tra le righe delle squadre */
-    background: transparent;
-}
-.kl-table th {
-    color: #ffffff !important; /* Testo BIANCO splendente */
-    font-size: 0.9rem;
-    padding: 10px;
-    text-align: center;
-    font-weight: 900;
-    text-transform: uppercase;
-}
-
-.kl-table td {
-    padding: 12px 10px;
-    vertical-align: middle;
-    text-align: center;
-    font-weight: bold;
-}
-
-/* Quadratini delle Posizioni (POS) a sinistra */
-.pos-num {
-    width: 50px;
-    font-size: 1.2rem;
-    font-weight: 900;
-}
-/* Prime due posizioni VERDI */
-.pos-semi .pos-num { 
-    background: #00ff44 !important; 
-    color: #000 !important; 
-}
-/* Dalla terza alla sesta OCRA / ORO TRAP */
-.pos-quarti .pos-num { 
-    background: #c8963e !important; 
-    color: #000 !important; 
-}
-
-/* Colonna Nome Squadra (con il Logo e la Sigla a 3 lettere) */
-.team-name {
-    text-align: left !important;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding-left: 20px !important;
-}
-
-.team-name img {
-    height: 30px;
-    width: 30px;
-    object-fit: contain;
-}
-
-.team-name span {
-    font-size: 1.1rem;
-    font-weight: 800;
-}
-
-/* Colonna dei Punti (PT) */
-.pt-val {
-    background: rgba(0, 0, 0, 0.2) !important;
-    font-size: 1.1rem;
-}
-/* --- CLASSIFICA DEFINITIVA MONACI'S LEAGUE (DA CANVA) --- */
-.kl-container {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 0 15px;
-}
-
-.kl-main-title {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin-bottom: 25px;
-    color: var(--gold);
-}
-
-.kl-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 8px; /* Stacco netto tra le righe */
-    background: transparent;
-}
-
-/* Intestazioni rialzate e leggibili (Scritte NERE su fondo chiaro) */
-.kl-table th {
-    background: #e0e0e0; /* Sfondo chiaro per far risaltare il testo */
-    color: #000000 !important; /* Testo NERO richiesto */
-    font-size: 0.9rem;
-    padding: 12px 10px;
-    text-align: center;
-    font-weight: 900;
-    text-transform: uppercase;
-    border-bottom: 2px solid #ccc;
-}
-
-.kl-table td {
-    padding: 12px 10px;
-    vertical-align: middle;
-    text-align: center;
-    font-weight: bold;
-}
-
-/* Quadratini delle Posizioni (POS) */
-.pos-num {
-    width: 50px;
-    font-size: 1.2rem;
-    font-weight: 900;
-}
-/* Prime due posizioni VERDI */
-.pos-semi .pos-num { 
-    background: #00ff44 !important; 
-    color: #000 !important; 
-}
-/* Dalla terza alla sesta OCRA / ORO TRAP */
-.pos-quarti .pos-num { 
-    background: #c8963e !important; 
-    color: #000 !important; 
-}
-
-/* Colonna Nome Squadra (con il Logo e la Sigla a 3 lettere) */
-.team-name {
-    text-align: left !important;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding-left: 20px !important;
-}
-
-.team-name img {
-    height: 32px;
-    width: 32px;
-    object-fit: contain;
-}
-
-.team-name span {
-    font-size: 1.1rem;
-    font-weight: 800;
-}
-
-/* Colonna dei Punti (PT) */
-.pt-val {
-    background: rgba(0, 0, 0, 0.2) !important;
-    font-size: 1.1rem;
-}
-/* --- CLASSIFICA DEFINITIVA MONACI'S LEAGUE (PC + MOBILE RESPONSIVE) --- */
-.kl-container {
-    max-width: 600px;
+    max-width: 700px;
     margin: 40px auto;
     padding: 0 15px;
     box-sizing: border-box;
@@ -401,16 +107,16 @@ td strong {
 .kl-table {
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 8px; /* Stacco netto tra le righe */
+    border-spacing: 0 8px;
     background: transparent;
 }
 
-/* Intestazioni rialzate (Scritte NERE su fondo chiaro) */
+/* Intestazioni (Scritte NERE su fondo chiaro) */
 .kl-table th {
     background: #e0e0e0;
     color: #000000 !important;
-    font-size: 0.9rem;
-    padding: 12px 10px;
+    font-size: 0.85rem;
+    padding: 12px 6px;
     text-align: center;
     font-weight: 900;
     text-transform: uppercase;
@@ -418,7 +124,7 @@ td strong {
 }
 
 .kl-table td {
-    padding: 12px 10px;
+    padding: 12px 6px;
     vertical-align: middle;
     text-align: center;
     font-weight: bold;
@@ -426,113 +132,20 @@ td strong {
 
 /* Quadratini delle Posizioni (POS) */
 .pos-num {
-    width: 50px;
+    width: 45px;
     font-size: 1.2rem;
     font-weight: 900;
 }
-/* Prime due posizioni VERDI */
-.pos-semi .pos-num { 
-    background: #00ff44 !important; 
-    color: #000 !important; 
-}
-/* Dalla terza alla sesta OCRA / ORO TRAP */
-.pos-quarti .pos-num { 
-    background: #c8963e !important; 
-    color: #000 !important; 
-}
+.pos-semi .pos-num { background: #00ff44 !important; color: #000 !important; }
+.pos-quarti .pos-num { background: #ffa800 !important; color: #000 !important; }
 
-/* Colonna Nome Squadra (con il Logo e la Sigla a 3 lettere) */
+/* Colonna Nome Squadra */
 .team-name {
     text-align: left !important;
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding-left: 20px !important;
-}
-
-.team-name img {
-    height: 32px;
-    width: 32px;
-    object-fit: contain;
-}
-
-.team-name span {
-    font-size: 1.1rem;
-    font-weight: 800;
-}
-
-/* Colonna dei Punti (PT) */
-.pt-val {
-    background: rgba(0, 0, 0, 0.2) !important;
-    font-size: 1.1rem;
-}
-/* --- CLASSIFICA DEFINITIVA MONACI'S LEAGUE (PC + MOBILE RESPONSIVE) --- */
-.kl-container {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 0 15px;
-    box-sizing: border-box;
-}
-
-.kl-main-title {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin-bottom: 25px;
-    color: var(--gold);
-}
-
-.kl-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 8px; /* Stacco netto tra le righe */
-    background: transparent;
-}
-
-/* Intestazioni rialzate (Scritte NERE su fondo chiaro) */
-.kl-table th {
-    background: #e0e0e0;
-    color: #000000 !important;
-    font-size: 0.9rem;
-    padding: 12px 10px;
-    text-align: center;
-    font-weight: 900;
-    text-transform: uppercase;
-    border-bottom: 2px solid #ccc;
-}
-
-.kl-table td {
-    padding: 12px 10px;
-    vertical-align: middle;
-    text-align: center;
-    font-weight: bold;
-}
-
-/* Quadratini delle Posizioni (POS) */
-.pos-num {
-    width: 50px;
-    font-size: 1.2rem;
-    font-weight: 900;
-}
-/* Prime due posizioni VERDI */
-.pos-semi .pos-num { 
-    background: #00ff44 !important; 
-    color: #000 !important; 
-}
-/* Dalla terza alla sesta col colore richiesto #ffa800 */
-.pos-quarti .pos-num { 
-    background: #ffa800 !important; 
-    color: #000 !important; 
-}
-
-/* Colonna Nome Squadra (con il Logo e la Sigla a 3 lettere) */
-.team-name {
-    text-align: left !important;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding-left: 20px !important;
+    gap: 12px;
+    padding-left: 15px !important;
 }
 
 .team-name img {
@@ -552,7 +165,9 @@ td strong {
     font-size: 1.1rem;
 }
 
-/* --- COLORI IDENTITÀ ESATTI DA GRAFICA CANVA --- */
+/* ==========================================================================
+   4. COLORI SQUADRE IDENTICI A GRAFICA CANVA
+   ========================================================================== */
 .team-calabroni { background: #103cd6; }
 .team-calabroni .team-name { border-left: 6px solid #0a1f6a; }
 .team-calabroni span, .team-calabroni td { color: #ffffff !important; }
@@ -597,48 +212,41 @@ td strong {
     border-radius: 2px;
 }
 .semi { background: #00ff44; }
-.quarti { background: #ffa800; } /* Colore Quarti Legenda #ffa800 */
-/* --- REGOLE SPECIFICHE PER DISPOSITIVI MOBILI (TOTALE SITO + CLASSIFICA) --- */
-@media screen and (max-width: 480px) {
-    /* Forza il grassetto pesante su OGNI singolo elemento del sito (Classifica compresa!) */
-    body, p, span, a, td, th, li, div, tr {
-        font-weight: 900 !important;
-    }
-    
-    /* Titoli generali e principali del sito super marcati */
-    h1, h2, h3, h4, strong {
-        font-weight: 900 !important;
+.quarti { background: #ffa800; }
+
+/* ==========================================================================
+   5. REGOLE ADATTAMENTO SMARTPHONE (MOBILE RESPONSIVE)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    /* Icona Hamburger per aprire il menu */
+    .hamburger {
+        display: flex !important;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 1010;
     }
 
-    /* Struttura della classifica adattata sul telefono */
-    .kl-main-title {
-        font-size: 2rem;
-        margin-bottom: 15px;
+    .hamburger span {
+        display: block;
+        width: 28px;
+        height: 3px;
+        background: #fff;
+        border-radius: 2px;
+        transition: 0.3s;
     }
-    .kl-table th, .kl-table td {
-        padding: 8px 5px;
-        font-size: 0.85rem;
-    }
-    .pos-num {
-        width: 35px;
-        font-size: 1rem;
-    }
-    .team-name {
-        gap: 8px;
-        padding-left: 8px !important;
-    }
-    .team-name img {
-        height: 24px;
-        width: 24px;
-    }
-    .team-name span {
-        font-size: 0.9rem;
-    }
-    .pt-val {
-        font-size: 0.95rem;
-    }
-    .kl-legenda {
-        font-size: 0.85rem;
-        gap: 15px;
-    }
-}
+
+    /* Struttura della Tendina Mobile */
+    .nav-menu {
+        display: none !important;
+        flex-direction: column !important;
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        width: 100% !important;
+        background: #111 !important;
+        border-bottom: 3px solid #ffa800 !important;
+        padding: 20px 0 !important;
+        gap: 15px !important;
+        text-align: center !important;
+        box-shadow: 0 5px 15px rgba(0,0,0,0
