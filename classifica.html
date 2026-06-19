@@ -5,6 +5,124 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' href='style.css'>
     <title>Classifica - Monaci's League</title>
+    <style>
+        /* STILI SPECIFICI PER LA TABELLA CLASSIFICA */
+        .rank-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 15px;
+        }
+        .rank-title {
+            color: var(--gold);
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .rank-table-wrapper {
+            background: #141414;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            overflow-x: auto; /* Permette lo sfoltimento sicuro su schermi minuscoli */
+        }
+        .rank-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            font-family: sans-serif;
+        }
+        .rank-table th {
+            background-color: #0d0d0d;
+            color: var(--gold);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            padding: 14px 10px;
+            border-bottom: 2px solid #222;
+        }
+        .rank-table td {
+            padding: 14px 10px;
+            border-bottom: 1px solid #1f1f1f;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.02rem;
+            vertical-align: middle;
+        }
+        .rank-table tr:last-child td {
+            border-bottom: none;
+        }
+        .rank-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        /* Allineamento specifico squadra */
+        .td-team {
+            text-align: left !important;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .td-team img {
+            height: 30px;
+            width: 30px;
+            object-fit: contain;
+        }
+        .td-pos {
+            font-weight: 900 !important;
+            color: var(--gold) !important;
+            width: 40px;
+        }
+        .td-pts {
+            font-weight: 900 !important;
+            color: #00e676 !important; /* Punti in verde brillante */
+            font-size: 1.1rem !important;
+        }
+
+        /* REGOLE DI SICUREZZA PER SMARTPHONE */
+        @media screen and (max-width: 768px) {
+            .rank-container {
+                margin: 20px auto;
+                padding: 0 8px;
+            }
+            .rank-title {
+                font-size: 1.2rem;
+                margin-bottom: 15px;
+            }
+            .rank-table-wrapper {
+                padding: 5px;
+            }
+            .rank-table th, .rank-table td {
+                padding: 10px 6px; /* Riduce l'altezza ma mantiene lo spazio laterale */
+                font-size: 0.8rem;
+            }
+            .td-team {
+                gap: 6px;
+            }
+            .td-team img {
+                height: 22px;
+                width: 22px;
+            }
+            .td-team span {
+                font-size: 0.78rem;
+                white-space: nowrap;
+            }
+            .td-pos {
+                width: 25px;
+            }
+            /* Diamo una larghezza minima fissa alle colonne dati per non farle appiccicare */
+            .col-data {
+                min-width: 28px; 
+            }
+            .td-pts {
+                font-size: 0.9rem !important;
+                min-width: 32px;
+            }
+        }
+    </style>
 </head>
 <body>
     
@@ -14,13 +132,9 @@
                 <img src="logo.png" alt="Logo" class="logo-img">
                 <span>MONACI'S LEAGUE</span>
             </div>
-            
             <div class="hamburger" id="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
-
             <nav class="nav-menu" id="nav-links">
                 <a href="index.html">Home</a>
                 <a href="squadre.html">Squadre</a>
@@ -32,114 +146,115 @@
         </div>
     </header>
 
-    <div class='container kl-container'>
-        <h1 class="kl-main-title">CLASSIFICA</h1>
+    <div class="rank-container">
+        <h1 class="rank-title">Classifica Generale</h1>
         
-        <table class="kl-table">
-            <thead>
-                <tr>
-                    <th>POS</th>
-                    <th>TEAM</th>
-                    <th>V</th>
-                    <th>S</th>
-                    <th>VS</th>
-                    <th>SS</th>
-                    <th>DIF</th>
-                    <th>PT</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="pos-semi team-kinglions">
-                    <td class="pos-num">1</td>
-                    <td class="team-name">
-                        <img src="king-lions.png" alt="">
-                        <span>KING LIONS FC</span>
-                    </td>
-                    <td>2</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>+10</td>
-                    <td class="pt-val">7</td>
-                </tr>
-                <tr class="pos-semi team-calabroni">
-                    <td class="pos-num">2</td>
-                    <td class="team-name">
-                        <img src="calabroni.png" alt="">
-                        <span>CALABRONI FC</span>
-                    </td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>+1</td>
-                    <td class="pt-val">5</td>
-                </tr>
-                <tr class="pos-quarti team-grizzly">
-                    <td class="pos-num">3</td>
-                    <td class="team-name">
-                        <img src="grizzly.png" alt="">
-                        <span>GRIZZLY FC</span>
-                    </td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>+6</td>
-                    <td class="pt-val">4</td>
-                </tr>
-                <tr class="pos-quarti team-darkknights">
-                    <td class="pos-num">4</td>
-                    <td class="team-name">
-                        <img src="dark-knights.png" alt="">
-                        <span>DARK KNIGHTS</span>
-                    </td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>-8</td>
-                    <td class="pt-val">3</td>
-                </tr>
-                <tr class="pos-quarti team-birrareal">
-                    <td class="pos-num">5</td>
-                    <td class="team-name">
-                        <img src="birrareal.png" alt="">
-                        <span>BIRRAREAL FC</span>
-                    </td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>-1</td>
-                    <td class="pt-val">1</td>
-                </tr>
-                <tr class="pos-quarti team-polar">
-                    <td class="pos-num">6</td>
-                    <td class="team-name">
-                        <img src="polar.png" alt="">
-                        <span>POLAR FC</span>
-                    </td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>-8</td>
-                    <td class="pt-val">0</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="kl-legenda">
-            <span><span class="box-color semi"></span> Semifinali</span>
-            <span><span class="box-color quarti"></span> Quarti di Finale</span>
+        <div class="rank-table-wrapper">
+            <table class="rank-table">
+                <thead>
+                    <tr>
+                        <th class="td-pos">P</th>
+                        <th style="text-align: left;">Squadra</th>
+                        <th class="col-data">G</th>
+                        <th class="col-data">V</th>
+                        <th class="col-data">N</th>
+                        <th class="col-data">S</th>
+                        <th class="td-pts">PT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-pos">1</td>
+                        <td>
+                            <div class="td-team">
+                                <img src="calabroni.png" alt="">
+                                <span>CALABRONI FC</span>
+                            </div>
+                        </td>
+                        <td class="col-data">2</td>
+                        <td class="col-data">2</td>
+                        <td class="col-data">0</td>
+                        <td class="col-data">0</td>
+                        <td class="td-pts">6</td>
+                    </tr>
+                    <tr>
+                        <td class="td-pos">2</td>
+                        <td>
+                            <div class="td-team">
+                                <img src="grizzly.png" alt="">
+                                <span>GRIZZLY FC</span>
+                            </div>
+                        </td>
+                        <td class="col-data">2</td>
+                        <td class="col-data">1</td>
+                        <td class="col-data">0</td>
+                        <td class="col-data">1</td>
+                        <td class="td-pts">4</td>
+                    </tr>
+                    <tr>
+                        <td class="td-pos">3</td>
+                        <td>
+                            <div class="td-team">
+                                <img src="king-lions.png" alt="">
+                                <span>KING LIONS FC</span>
+                            </div>
+                        </td>
+                        <td class="col-data">2</td>
+                        <td class="col-data">1</td>
+                        <td class="col-data">0</td>
+                        <td class="col-data">1</td>
+                        <td class="td-pts">3</td>
+                    </tr>
+                    <tr>
+                        <td class="td-pos">4</td>
+                        <td>
+                            <div class="td-team">
+                                <img src="dark-knights.png" alt="">
+                                <span>DARK KNIGHTS</span>
+                            </div>
+                        </td>
+                        <td class="col-data">2</td>
+                        <td class="col-data">1</td>
+                        <td class="col-data">0</td>
+                        <td class="col-data">1</td>
+                        <td class="td-pts">3</td>
+                    </tr>
+                    <tr>
+                        <td class="td-pos">5</td>
+                        <td>
+                            <div class="td-team">
+                                <img src="birrareal.png" alt="">
+                                <span>FC BIRRAREAL</span>
+                            </div>
+                        </td>
+                        <td class="col-data">2</td>
+                        <td class="col-data">1</td>
+                        <td class="col-data">0</td>
+                        <td class="col-data">1</td>
+                        <td class="td-pts">2</td>
+                    </tr>
+                    <tr>
+                        <td class="td-pos">6</td>
+                        <td>
+                            <div class="td-team">
+                                <img src="polar.png" alt="">
+                                <span>POLAR FC</span>
+                            </div>
+                        </td>
+                        <td class="col-data">2</td>
+                        <td class="col-data">0</td>
+                        <td class="col-data">0</td>
+                        <td class="col-data">2</td>
+                        <td class="td-pts">0</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
     <script>
         const hamburger = document.getElementById('hamburger-menu');
         const navMenu = document.getElementById('nav-links');
-
         hamburger.addEventListener('click', () => {
             navMenu.classList.toggle('active');
         });
