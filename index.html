@@ -1,73 +1,83 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Monaci's League</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monaci's League - Home</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-    <div class="container nav">
-        <div class="brand" style="display: flex; align-items: center; gap: 10px;">
-            <img src="logo.png" alt="Logo" height="40" style="display: block;">
-            <span>MONACI'S LEAGUE</span>
+
+    <header>
+        <div class="nav">
+            <div class="brand">
+                <img src="logo.png" alt="Logo Monaci's League" class="logo-img">
+                <span>MONACI'S LEAGUE</span>
+            </div>
+            
+            <div class="hamburger" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav class="nav-menu" id="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Squadre</a>
+                <a href="#">Risultati</a>
+                <a href="#">Classifica</a>
+                <a href="#">Marcatori</a>
+            </nav>
         </div>
+    </header>
+
+    <main class="container">
         
-        <input type="checkbox" id="menu-toggle" class="menu-toggle">
-        <label for="menu-toggle" class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
+        <section class="home-hero">
+            <h1 class="home-main-title">MONACI'S LEAGUE</h1>
+            <p class="home-subtitle">Sito ufficiale del torneo</p>
+        </section>
 
-        <nav class="nav-menu">
-            <a href="index.html">Home</a>
-            <a href="calendario.html">Calendario</a>
-            <a href="risultati.html">Risultati</a>
-            <a href="classifica.html">Classifica</a>
-            <a href="marcatori.html">Marcatori</a>
-        </nav>
-    </div>
-</header>
-<a href="index.html">Home</a>
-<a href="classifica.html">Classifica</a>
-<a href="marcatori.html">Marcatori</a>
-<a href="calendario.html">Calendario</a>
-</nav>
-</div>
-</header>
+        <section class="home-grid">
+            
+            <div class="home-card">
+                <h3>Ultimi Risultati</h3>
+                <div class="card-content">
+                    <p>Monaci FC 2-1 Spartans</p>
+                    <p>Warriors 0-0 Kings</p>
+                    <p>Titans 3-2 Phoenix</p>
+                </div>
+            </div>
 
-<section class="hero">
-<h1>MONACI'S LEAGUE</h1>
-<p>Sito ufficiale del torneo</p>
-</section>
+            <div class="home-card">
+                <h3>Classifica</h3>
+                <div class="card-content ordered-list">
+                    <p>1. Monaci FC - 28 pt</p>
+                    <p>2. Spartans - 24 pt</p>
+                    <p>3. Warriors - 22 pt</p>
+                </div>
+            </div>
 
-<div class="grid">
-<div class="card">
-<h2>Ultimi Risultati</h2>
-<p>Monaci FC 2-1 Spartans</p>
-<p>Warriors 0-0 Kings</p>
-<p>Titans 3-2 Phoenix</p>
-</div>
+            <div class="home-card">
+                <h3>Top Marcatori</h3>
+                <div class="card-content ordered-list">
+                    <p>1. Rossi - 14</p>
+                    <p>2. Bianchi - 11</p>
+                    <p>3. Verdi - 9</p>
+                </div>
+            </div>
 
-<div class="card">
-<h2>Classifica</h2>
-<ol>
-<li>Monaci FC - 28 pt</li>
-<li>Spartans - 24 pt</li>
-<li>Warriors - 22 pt</li>
-</ol>
-</div>
+        </section>
 
-<div class="card">
-<h2>Top Marcatori</h2>
-<ol>
-<li>Rossi - 14</li>
-<li>Bianchi - 11</li>
-<li>Verdi - 9</li>
-</ol>
-</div>
-</div>
+    </main>
+
+    <script>
+        const hamburger = document.getElementById('hamburger-menu');
+        const navMenu = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
