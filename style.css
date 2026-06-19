@@ -43,11 +43,117 @@ nav {
     gap: 25px;
 }
 
-nav a {
-    color: white;
+/* --- NAVIGAZIONE GENERALE (PC) --- */
+header {
+    background: #111;
+    border-bottom: 2px solid var(--gold, #ffa800);
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    position: relative;
+}
+
+.brand {
+    font-weight: 900;
+    color: #fff;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-menu a {
+    color: #fff;
     text-decoration: none;
-    font-size: 1.1rem;
-    transition: color 0.2s;
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: #ffa800;
+}
+
+/* Nascondiamo i controlli mobile su PC */
+.menu-toggle, .hamburger {
+    display: none;
+}
+
+/* --- TRASFORMAZIONE IN MENU A TENDINA (MOBILE) --- */
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 1010;
+    }
+
+    .hamburger span {
+        display: block;
+        width: 28px;
+        height: 3px;
+        background: #fff;
+        border-radius: 2px;
+        transition: 0.3s;
+    }
+
+    /* La Tendina che si apre dall'alto */
+    .nav-menu {
+        display: none; /* Nascondi di base */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #111;
+        border-bottom: 3px solid #ffa800;
+        padding: 20px 0;
+        gap: 15px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        z-index: 1005;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 10px 0;
+        font-size: 1.2rem;
+    }
+
+    /* Logica di apertura della tendina al click */
+    .menu-toggle:checked ~ .nav-menu {
+        display: flex; /* Mostra la tendina quando cliccato */
+    }
+
+    /* Animazione dell'hamburger che diventa una "X" quando si apre */
+    .menu-toggle:checked ~ .hamburger span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6deg);
+    }
+    .menu-toggle:checked ~ .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle:checked ~ .hamburger span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6deg);
+    }
+
+    .menu-toggle {
+        display: none;
+    }
 }
 
 nav a:hover {
