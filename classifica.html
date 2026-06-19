@@ -6,27 +6,48 @@
     <link rel='stylesheet' href='style.css'>
     <title>Classifica - Monaci's League</title>
     <style>
-        /* FIX MOBILE: Protegge lo stile originale della tabella senza modificarla */
+        /* ==========================================================================
+           STILI SOLO PER SITI MOBILE (TELEFONI)
+           ========================================================================== */
         @media screen and (max-width: 768px) {
             .kl-container {
                 padding: 0 8px;
             }
-            /* L'involucro permette lo scorrimento laterale se lo schermo è troppo stretto */
+            
+            /* Attiva lo scorrimento laterale SOLO sul telefono se lo schermo è troppo stretto */
             .table-responsive-wrapper {
                 width: 100%;
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
                 margin-bottom: 20px;
             }
-            /* Forza le colonne numeriche a mantenere un minimo di respiro laterale */
+            
+            /* Forza le colonne a non stringersi e a mantenere la spaziatura sul telefono */
             .kl-table th, 
             .kl-table td {
-                padding-left: 10px !important;
-                padding-right: 10px !important;
-                white-space: nowrap; /* Evita che i testi o i numeri vadano a capo */
+                padding-left: 12px !important;
+                padding-right: 12px !important;
+                white-space: nowrap; /* Impedisce che i numeri o i testi vadano a capo */
             }
+            
+            /* Ottimizzazione testi per lo schermo del telefono */
             .team-name span {
                 font-size: 0.85rem;
+            }
+            .team-name img {
+                width: 22px;
+                height: 22px;
+            }
+        }
+
+        /* ==========================================================================
+           STILI PER PC (SCHERMI GRANDI)
+           Rende il wrapper invisibile e inerte su desktop per non intaccare lo stile originale
+           ========================================================================== */
+        @media screen and (min-width: 769px) {
+            .table-responsive-wrapper {
+                width: 100%;
+                overflow: visible;
             }
         }
     </style>
