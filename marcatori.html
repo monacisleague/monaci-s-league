@@ -5,6 +5,22 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' href='style.css'>
     <title>Marcatori - Monaci's League</title>
+    <style>
+        .legend-container {
+            margin-top: 20px;
+            padding: 12px 15px;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: #aaa;
+            font-size: 0.85rem;
+            text-align: left;
+        }
+        .legend-container span {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -32,21 +48,138 @@
         <table class="kl-table">
             <thead>
                 <tr>
+                    <th style="width: 60px; text-align: center;">Pos.</th>
                     <th style="text-align: left; padding-left: 15px;">Giocatore</th>
                     <th>Gol</th>
                 </tr>
             </thead>
             <tbody>
                 <tr style="background: #222;">
-                    <td style="text-align: left; padding-left: 15px;">Rossi</td>
-                    <td>14</td>
+                    <td style="text-align: center; color: #ffcc00; font-weight: bold;">1</td>
+                    <td style="text-align: left; padding-left: 15px;">Antonucci</td>
+                    <td>22</td>
                 </tr>
                 <tr style="background: #1c1c1c;">
-                    <td style="text-align: left; padding-left: 15px;">Bianchi</td>
+                    <td style="text-align: center;">2</td>
+                    <td style="text-align: left; padding-left: 15px;">Giannella</td>
+                    <td>18</td>
+                </tr>
+                <tr style="background: #222;">
+                    <td style="text-align: center;">3</td>
+                    <td style="text-align: left; padding-left: 15px;">Ventrella</td>
+                    <td>18</td>
+                </tr>
+                <tr style="background: #1c1c1c;">
+                    <td style="text-align: center;">4</td>
+                    <td style="text-align: left; padding-left: 15px;">Tupputi (pres)</td>
+                    <td>12*</td>
+                </tr>
+                <tr style="background: #222;">
+                    <td style="text-align: center;">5</td>
+                    <td style="text-align: left; padding-left: 15px;">Maffione L.</td>
                     <td>11</td>
+                </tr>
+                <tr style="background: #1c1c1c;">
+                    <td style="text-align: center;">6</td>
+                    <td style="text-align: left; padding-left: 15px;">Diella</td>
+                    <td>11</td>
+                </tr>
+                <tr style="background: #222;">
+                    <td style="text-align: center;">7</td>
+                    <td style="text-align: left; padding-left: 15px;">Morelli</td>
+                    <td>10</td>
+                </tr>
+                <tr style="background: #1c1c1c;">
+                    <td style="text-align: center;">8</td>
+                    <td style="text-align: left; padding-left: 15px;">Corcella L.</td>
+                    <td>9</td>
+                </tr>
+                <tr style="background: #222;">
+                    <td style="text-align: center;">9</td>
+                    <td style="text-align: left; padding-left: 15px;">Violante</td>
+                    <td>9</td>
+                </tr>
+                <tr style="background: #1c1c1c;">
+                    <td style="text-align: center;">10</td>
+                    <td style="text-align: left; padding-left: 15px;">Dicataldo N.</td>
+                    <td>7</td>
+                </tr>
+                <tr style="background: #222;">
+                    <td style="text-align: center;">11</td>
+                    <td style="text-align: left; padding-left: 15px;">Maffione M.</td>
+                    <td>4</td>
+                </tr>
+                <tr style="background: #1c1c1c;">
+                    <td style="text-align: center;">12</td>
+                    <td style="text-align: left; padding-left: 15px;">Battaglia</td>
+                    <td>4</td>
+                </tr>
+                <tr style="background: #222;">
+                    <td style="text-align: center;">13</td>
+                    <td style="text-align: left; padding-left: 15px;">Torre</td>
+                    <td>4</td>
+                </tr>
+                <tr style="background: #1c1c1c;">
+                    <td style="text-align: center;">14</td>
+                    <td style="text-align: left; padding-left: 15px;">Corcella G.</td>
+                    <td>4</td>
+                </tr>
+                <tr style="background: #222;">
+                    <td style="text-align: center;">15</td>
+                    <td style="text-align: left; padding-left: 15px;">Delvecchio</td>
+                    <td>4</td>
+                </tr>
+                <tr style="background: #1c1c1c;">
+                    <td style="text-align: center;">16</td>
+                    <td style="text-align: left; padding-left: 15px;">Lacerenza (GK)</td>
+                    <td>2</td>
+                </tr>
+                <tr style="background: #222;">
+                    <td style="text-align: center;">17</td>
+                    <td style="text-align: left; padding-left: 15px;">Dicorato (pres)</td>
+                    <td>2</td>
+                </tr>
+                <tr style="background: #1c1c1c;">
+                    <td style="text-align: center;">18</td>
+                    <td style="text-align: left; padding-left: 15px;">Calabrese F.</td>
+                    <td>2</td>
+                </tr>
+                <tr style="background: #222;">
+                    <td style="text-align: center;">19</td>
+                    <td style="text-align: left; padding-left: 15px;">Grimaldi</td>
+                    <td>1</td>
+                </tr>
+                <tr style="background: #1c1c1c;">
+                    <td style="text-align: center;">20</td>
+                    <td style="text-align: left; padding-left: 15px;">Dicataldo G. (GK)</td>
+                    <td>1</td>
+                </tr>
+                <tr style="background: #222;">
+                    <td style="text-align: center;">21</td>
+                    <td style="text-align: left; padding-left: 15px;">Montenegro (pres)</td>
+                    <td>1</td>
+                </tr>
+                <tr style="background: #1c1c1c;">
+                    <td style="text-align: center;">22</td>
+                    <td style="text-align: left; padding-left: 15px;">Campaniello (pres)</td>
+                    <td>1</td>
+                </tr>
+                <tr style="background: #222;">
+                    <td style="text-align: center;">23</td>
+                    <td style="text-align: left; padding-left: 15px;">Doronzo (pres)</td>
+                    <td>1</td>
+                </tr>
+                <tr style="background: #1c1c1c;">
+                    <td style="text-align: center;">24</td>
+                    <td style="text-align: left; padding-left: 15px;">Dicuonzo (pres)</td>
+                    <td>1</td>
                 </tr>
             </tbody>
         </table>
+
+        <div class="legend-container">
+            <p><span>*</span> un gol segnato su rigore presidenziale</p>
+        </div>
     </div>
 
     <script>
