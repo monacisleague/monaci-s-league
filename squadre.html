@@ -4,23 +4,18 @@
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' href='style.css'>
-    <title>Squadre - Monaci's League</title>
+    <title>Marcatori - Monaci's League</title>
 </head>
 <body>
-    
     <header>
         <div class="nav">
             <div class="brand">
                 <img src="logo.png" alt="Logo" class="logo-img">
                 <span>MONACI'S LEAGUE</span>
             </div>
-            
             <div class="hamburger" id="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
-
             <nav class="nav-menu" id="nav-links">
                 <a href="index.html">Home</a>
                 <a href="squadre.html">Squadre</a>
@@ -33,57 +28,22 @@
     </header>
 
     <div class='container kl-container'>
-        <h1 class="kl-main-title">SQUADRE PARTECIPANTI</h1>
-        
+        <h1 class="kl-main-title">TOP MARCATORI</h1>
         <table class="kl-table">
             <thead>
                 <tr>
-                    <th style="text-align: left; padding-left: 15px;">SQUADRA</th>
-                    <th>SIGLA</th>
+                    <th style="text-align: left; padding-left: 15px;">Giocatore</th>
+                    <th>Gol</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="team-calabroni">
-                    <td class="team-name">
-                        <img src="calabroni.png" alt="">
-                        <span>CALABRONI FC</span>
-                    </td>
-                    <td>CAL</td>
+                <tr style="background: #222;">
+                    <td style="text-align: left; padding-left: 15px;">Rossi</td>
+                    <td>14</td>
                 </tr>
-                <tr class="team-kinglions">
-                    <td class="team-name">
-                        <img src="king-lions.png" alt="">
-                        <span>KING LIONS FC</span>
-                    </td>
-                    <td>KLI</td>
-                </tr>
-                <tr class="team-grizzly">
-                    <td class="team-name">
-                        <img src="grizzly.png" alt="">
-                        <span>GRIZZLY FC</span>
-                    </td>
-                    <td>GRI</td>
-                </tr>
-                <tr class="team-darkknights">
-                    <td class="team-name">
-                        <img src="dark-knights.png" alt="">
-                        <span>DARK KNIGHTS</span>
-                    </td>
-                    <td>DKT</td>
-                </tr>
-                <tr class="team-birrareal">
-                    <td class="team-name">
-                        <img src="birrareal.png" alt="">
-                        <span>BIRRAREAL FC</span>
-                    </td>
-                    <td>BIR</td>
-                </tr>
-                <tr class="team-polar">
-                    <td class="team-name">
-                        <img src="polar.png" alt="">
-                        <span>POLAR FC</span>
-                    </td>
-                    <td>POL</td>
+                <tr style="background: #1c1c1c;">
+                    <td style="text-align: left; padding-left: 15px;">Bianchi</td>
+                    <td>11</td>
                 </tr>
             </tbody>
         </table>
@@ -92,10 +52,7 @@
     <script>
         const hamburger = document.getElementById('hamburger-menu');
         const navMenu = document.getElementById('nav-links');
-
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
+        hamburger.addEventListener('click', () => { navMenu.classList.toggle('active'); });
     </script>
 </body>
 </html>
