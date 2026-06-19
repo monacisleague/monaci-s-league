@@ -4,124 +4,7 @@
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' href='style.css'>
-    <title>Classifica - Monaci's League</title>
-    <style>
-        /* STILI SPECIFICI PER LA TABELLA CLASSIFICA */
-        .rank-container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 15px;
-        }
-        .rank-title {
-            color: var(--gold);
-            font-size: 1.5rem;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .rank-table-wrapper {
-            background: #141414;
-            border: 1px solid #222;
-            border-radius: 12px;
-            padding: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            overflow-x: auto;
-        }
-        .rank-table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: center;
-            font-family: sans-serif;
-        }
-        .rank-table th {
-            background-color: #0d0d0d;
-            color: var(--gold);
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            padding: 14px 10px;
-            border-bottom: 2px solid #222;
-        }
-        .rank-table td {
-            padding: 14px 10px;
-            border-bottom: 1px solid #1f1f1f;
-            color: #fff;
-            font-weight: 700;
-            font-size: 1.02rem;
-            vertical-align: middle;
-        }
-        .rank-table tr:last-child td {
-            border-bottom: none;
-        }
-        .rank-table tr:hover td {
-            background: rgba(255, 255, 255, 0.02);
-        }
-        
-        /* Allineamento specifico squadra */
-        .td-team {
-            text-align: left !important;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .td-team img {
-            height: 30px;
-            width: 30px;
-            object-fit: contain;
-        }
-        .td-pos {
-            font-weight: 900 !important;
-            color: #000000 !important; /* Testo nero per contrasto sui cerchi colorati */
-            width: 40px;
-        }
-
-        /* SFONDI POSIZIONE (LEGENDA GRAPHIC COLORI) */
-        .bg-semifinali { background-color: #4cd964 !important; }
-        .bg-quarti { background-color: #ff9500 !important; }
-        .bg-normal { background-color: #141414 !important; }
-
-        /* REGOLE DI PROTEZIONE E DISTANZIAMENTO PER SMARTPHONE */
-        @media screen and (max-width: 768px) {
-            .rank-container {
-                margin: 20px auto;
-                padding: 0 8px;
-            }
-            .rank-title {
-                font-size: 1.2rem;
-                margin-bottom: 15px;
-            }
-            .rank-table-wrapper {
-                padding: 5px;
-            }
-            .rank-table th, .rank-table td {
-                padding: 10px 4px; /* Ridotto il padding verticale, conservato lo spazio orizzontale */
-                font-size: 0.8rem;
-            }
-            .td-team {
-                gap: 6px;
-            }
-            .td-team img {
-                height: 22px;
-                width: 22px;
-            }
-            .td-team span {
-                font-size: 0.75rem;
-                white-space: nowrap;
-            }
-            
-            /* Diamo una larghezza minima rigida alle colonne sul telefono per non farle unire */
-            .col-data {
-                min-width: 28px;
-                display: table-cell !important;
-            }
-            .td-pos {
-                width: 25px;
-                font-size: 0.78rem !important;
-            }
-        }
-    </style>
+    <title>Calendario - Monaci's League</title>
 </head>
 <body>
     
@@ -131,9 +14,13 @@
                 <img src="logo.png" alt="Logo" class="logo-img">
                 <span>MONACI'S LEAGUE</span>
             </div>
+            
             <div class="hamburger" id="hamburger-menu">
-                <span></span><span></span><span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
+
             <nav class="nav-menu" id="nav-links">
                 <a href="index.html">Home</a>
                 <a href="squadre.html">Squadre</a>
@@ -145,98 +32,180 @@
         </div>
     </header>
 
-    <div class="rank-container">
-        <h1 class="rank-title">Classifica Giornata 2</h1>
+    <div class='container kl-container'>
+        <h1 class="kl-main-title">CALENDARIO TORNEO</h1>
         
-        <div class="rank-table-wrapper">
-            <table class="rank-table">
-                <thead>
-                    <tr>
-                        <th style="width: 50px;">POS.</th>
-                        <th style="text-align: left;">SQUADRE</th>
-                        <th class="col-data">V</th>
-                        <th class="col-data">S</th>
-                        <th class="col-data">VS</th>
-                        <th class="col-data">SS</th>
-                        <th class="col-data">Dif.</th>
-                        <th style="width: 50px;">PT.</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="td-pos bg-semifinali">1</td>
-                        <td>
-                            <div class="td-team">
-                                <img src="calabroni.png" alt="">
-                                <span>CALABRONI FC</span>
-                            </div>
-                        </td>
-                        <td class="col-data">1</td>
-                        <td class="col-data">0</td>
-                        <td class="col-data">1</td>
-                        <td class="col-data">0</td>
-                        <td class="col-data">+1</td>
-                        <td style="font-weight: 900;">5</td>
-                    </tr>
-                    <tr>
-                        <td class="td-pos bg-semifinali">2</td>
-                        <td>
-                            <div class="td-team">
-                                <img src="king-lions.png" alt="">
-                                <span>KING LIONS FC</span>
-                            </div>
-                        </td>
-                        <td class="col-data">1</td>
-                        <td class="col-data">0</td>
-                        <td class="col-data">0</td>
-                        <td class="col-data">1</td>
-                        <td class="col-data">+10</td>
-                        <td style="font-weight: 900;">7</td>
-                    </tr>
-                    <tr>
-                        <td class="td-pos bg-quarti">3</td>
-                        <td>
-                            <div class="td-team">
-                                <img src="grizzly.png" alt="">
-                                <span>GRIZZLY FC</span>
-                            </div>
-                        </td>
-                        <td class="col-data">1</td>
-                        <td class="col-data">0</td>
-                        <td class="col-data">0</td>
-                        <td class="col-data">1</td>
-                        <td class="col-data">+6</td>
-                        <td style="font-weight: 900;">4</td>
-                    </tr>
-                    <tr>
-                        <td class="td-pos bg-quarti">4</td>
-                        <td>
-                            <div class="td-team">
-                                <img src="dark-knights.png" alt="">
-                                <span>DARK KNIGHTS</span>
-                            </div>
-                        </td>
-                        <td class="col-data">1</td>
-                        <td class="col-data">1</td>
-                        <td class="col-data">0</td>
-                        <td class="col-data">0</td>
-                        <td class="col-data">-8</td>
-                        <td style="font-weight: 900;">3</td>
-                    </tr>
-                    <tr>
-                        <td class="td-pos bg-quarti">5</td>
-                        <td>
-                            <div class="td-team">
-                                <img src="birrareal.png" alt="">
-                                <span>BIRRAREAL FC</span>
-                            </div>
-                        </td>
-                        <td class="col-data">0</td>
-                        <td class="col-data">1</td>
-                        <td class="col-data">1</td>
-                        <td class="col-data">0</td>
-                        <td class="col-data">-1</td>
-                        <td style="font-weight: 900;">1</td>
-                    </tr>
-                    <tr>
-                        <td class="td-pos
+        <div class="home-card" style="margin-bottom: 30px;">
+            <h3>GIORNATA 3</h3>
+            <div class="card-content">
+                <table class="kl-table" style="margin-top: 0; border-spacing: 0 4px;">
+                    <tbody>
+                        <tr style="background: rgba(255,255,255,0.03);">
+                            <td colspan="3" style="font-size: 0.85rem; color: var(--gold); padding: 5px 0 2px 10px; text-align: left;">
+                                Mercoledì, 17 Giugno 2026 | 17.00 PM
+                            </td>
+                        </tr>
+                        <tr style="background: rgba(255,255,255,0.03);">
+                            <td class="team-name" style="padding-left: 10px !important;">
+                                <img src="king-lions.png" alt=""> <span>KING LIONS FC</span>
+                            </td>
+                            <td style="color: var(--gold); font-weight: 900; width: 60px;">VS</td>
+                            <td class="team-name" style="justify-content: flex-end; text-align: right !important; padding-right: 10px !important;">
+                                <span>POLAR FC</span> <img src="polar.png" alt="">
+                            </td>
+                        </tr>
+
+                        <tr style="background: rgba(255,255,255,0.01);">
+                            <td colspan="3" style="font-size: 0.85rem; color: var(--gold); padding: 15px 0 2px 10px; text-align: left;">
+                                Mercoledì, 17 Giugno 2026 | 18.00 PM
+                            </td>
+                        </tr>
+                        <tr style="background: rgba(255,255,255,0.01);">
+                            <td class="team-name" style="padding-left: 10px !important;">
+                                <img src="grizzly.png" alt=""> <span>GRIZZLY FC</span>
+                            </td>
+                            <td style="color: var(--gold); font-weight: 900; width: 60px;">VS</td>
+                            <td class="team-name" style="justify-content: flex-end; text-align: right !important; padding-right: 10px !important;">
+                                <span>CALABRONI FC</span> <img src="calabroni.png" alt="">
+                            </td>
+                        </tr>
+
+                        <tr style="background: rgba(255,255,255,0.03);">
+                            <td colspan="3" style="font-size: 0.85rem; color: var(--gold); padding: 15px 0 2px 10px; text-align: left;">
+                                Giovedì, 18 Giugno 2026 | 18.00 PM
+                            </td>
+                        </tr>
+                        <tr style="background: rgba(255,255,255,0.03);">
+                            <td class="team-name" style="padding-left: 10px !important;">
+                                <img src="birrareal.png" alt=""> <span>FC BIRRAREAL</span>
+                            </td>
+                            <td style="color: var(--gold); font-weight: 900; width: 60px;">VS</td>
+                            <td class="team-name" style="justify-content: flex-end; text-align: right !important; padding-right: 10px !important;">
+                                <span>DARK KNIGHTS</span> <img src="dark-knights.png" alt="">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="home-card" style="margin-bottom: 30px;">
+            <h3>GIORNATA 2</h3>
+            <div class="card-content">
+                <table class="kl-table" style="margin-top: 0; border-spacing: 0 4px;">
+                    <tbody>
+                        <tr style="background: rgba(255,255,255,0.03);">
+                            <td colspan="3" style="font-size: 0.85rem; color: var(--gold); padding: 5px 0 2px 10px; text-align: left;">
+                                Giovedì, 11 Giugno 2026 | 17.00 PM
+                            </td>
+                        </tr>
+                        <tr style="background: rgba(255,255,255,0.03);">
+                            <td class="team-name" style="padding-left: 10px !important;">
+                                <img src="polar.png" alt=""> <span>POLAR FC</span>
+                            </td>
+                            <td style="color: var(--gold); font-weight: 900; width: 60px;">VS</td>
+                            <td class="team-name" style="justify-content: flex-end; text-align: right !important; padding-right: 10px !important;">
+                                <span>GRIZZLY FC</span> <img src="grizzly.png" alt="">
+                            </td>
+                        </tr>
+
+                        <tr style="background: rgba(255,255,255,0.01);">
+                            <td colspan="3" style="font-size: 0.85rem; color: var(--gold); padding: 15px 0 2px 10px; text-align: left;">
+                                Venerdì, 12 Giugno 2026 | 17.00 PM
+                            </td>
+                        </tr>
+                        <tr style="background: rgba(255,255,255,0.01);">
+                            <td class="team-name" style="padding-left: 10px !important;">
+                                <img src="king-lions.png" alt=""> <span>KING LIONS FC</span>
+                            </td>
+                            <td style="color: var(--gold); font-weight: 900; width: 60px;">VS</td>
+                            <td class="team-name" style="justify-content: flex-end; text-align: right !important; padding-right: 10px !important;">
+                                <span>DARK KNIGHTS</span> <img src="dark-knights.png" alt="">
+                            </td>
+                        </tr>
+
+                        <tr style="background: rgba(255,255,255,0.03);">
+                            <td colspan="3" style="font-size: 0.85rem; color: var(--gold); padding: 15px 0 2px 10px; text-align: left;">
+                                Venerdì, 12 Giugno 2026 | 18.00 PM
+                            </td>
+                        </tr>
+                        <tr style="background: rgba(255,255,255,0.03);">
+                            <td class="team-name" style="padding-left: 10px !important;">
+                                <img src="calabroni.png" alt=""> <span>CALABRONI FC</span>
+                            </td>
+                            <td style="color: var(--gold); font-weight: 900; width: 60px;">VS</td>
+                            <td class="team-name" style="justify-content: flex-end; text-align: right !important; padding-right: 10px !important;">
+                                <span>FC BIRRAREAL</span> <img src="birrareal.png" alt="">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="home-card">
+            <h3>GIORNATA 1</h3>
+            <div class="card-content">
+                <table class="kl-table" style="margin-top: 0; border-spacing: 0 4px;">
+                    <tbody>
+                        <tr style="background: rgba(255,255,255,0.03);">
+                            <td colspan="3" style="font-size: 0.85rem; color: var(--gold); padding: 5px 0 2px 10px; text-align: left;">
+                                Martedì, 9 Giugno 2026 | 17.00 PM
+                            </td>
+                        </tr>
+                        <tr style="background: rgba(255,255,255,0.03);">
+                            <td class="team-name" style="padding-left: 10px !important;">
+                                <img src="birrareal.png" alt=""> <span>FC BIRRAREAL</span>
+                            </td>
+                            <td style="color: var(--gold); font-weight: 900; width: 60px;">VS</td>
+                            <td class="team-name" style="justify-content: flex-end; text-align: right !important; padding-right: 10px !important;">
+                                <span>GRIZZLY FC</span> <img src="grizzly.png" alt="">
+                            </td>
+                        </tr>
+
+                        <tr style="background: rgba(255,255,255,0.01);">
+                            <td colspan="3" style="font-size: 0.85rem; color: var(--gold); padding: 15px 0 2px 10px; text-align: left;">
+                                Martedì, 9 Giugno 2026 | 18.00 PM
+                            </td>
+                        </tr>
+                        <tr style="background: rgba(255,255,255,0.01);">
+                            <td class="team-name" style="padding-left: 10px !important;">
+                                <img src="dark-knights.png" alt=""> <span>DARK KNIGHTS</span>
+                            </td>
+                            <td style="color: var(--gold); font-weight: 900; width: 60px;">VS</td>
+                            <td class="team-name" style="justify-content: flex-end; text-align: right !important; padding-right: 10px !important;">
+                                <span>POLAR FC</span> <img src="polar.png" alt="">
+                            </td>
+                        </tr>
+
+                        <tr style="background: rgba(255,255,255,0.03);">
+                            <td colspan="3" style="font-size: 0.85rem; color: var(--gold); padding: 15px 0 2px 10px; text-align: left;">
+                                Martedì, 9 Giugno 2026 | 19.00 PM
+                            </td>
+                        </tr>
+                        <tr style="background: rgba(255,255,255,0.03);">
+                            <td class="team-name" style="padding-left: 10px !important;">
+                                <img src="calabroni.png" alt=""> <span>CALABRONI FC</span>
+                            </td>
+                            <td style="color: var(--gold); font-weight: 900; width: 60px;">VS</td>
+                            <td class="team-name" style="justify-content: flex-end; text-align: right !important; padding-right: 10px !important;">
+                                <span>KING LIONS FC</span> <img src="king-lions.png" alt="">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const hamburger = document.getElementById('hamburger-menu');
+        const navMenu = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
