@@ -36,15 +36,16 @@
                 border-spacing: 0 4px !important; /* Mantiene la spaziatura originale Kings */
             }
 
-            /* Ripartizione delle colonne: diamo il massimo spazio possibile al TEAM (50%) */
+            /* Ripartizione delle colonne inclusa la nuova colonna G */
             .kl-table th:nth-child(1), .kl-table td:nth-child(1) { width: 8%; }   /* POS */
-            .kl-table th:nth-child(2), .kl-table td:nth-child(2) { width: 50%; }  /* TEAM (Spazio enorme per il nome completo) */
-            .kl-table th:nth-child(3), .kl-table td:nth-child(3) { width: 7%; }   /* V */
-            .kl-table th:nth-child(4), .kl-table td:nth-child(4) { width: 7%; }   /* S */
-            .kl-table th:nth-child(5), .kl-table td:nth-child(5) { width: 7.5%; } /* VS */
-            .kl-table th:nth-child(6), .kl-table td:nth-child(6) { width: 7.5%; } /* SS */
-            .kl-table th:nth-child(7), .kl-table td:nth-child(7) { width: 11%; }  /* DIF */
-            .kl-table th:nth-child(8), .kl-table td:nth-child(8) { width: 12%; }  /* PT */
+            .kl-table th:nth-child(2), .kl-table td:nth-child(2) { width: 44%; }  /* TEAM (Spazio ottimizzato per il nome) */
+            .kl-table th:nth-child(3), .kl-table td:nth-child(3) { width: 6%; }   /* G */
+            .kl-table th:nth-child(4), .kl-table td:nth-child(4) { width: 6%; }   /* V */
+            .kl-table th:nth-child(5), .kl-table td:nth-child(5) { width: 6%; }   /* S */
+            .kl-table th:nth-child(6), .kl-table td:nth-child(6) { width: 8%; }   /* VS */
+            .kl-table th:nth-child(7), .kl-table td:nth-child(7) { width: 8%; }   /* SS */
+            .kl-table th:nth-child(8), .kl-table td:nth-child(8) { width: 12%; }  /* DIF */
+            .kl-table th:nth-child(9), .kl-table td:nth-child(9) { width: 12%; }  /* PT */
 
             /* Spaziature interne ultra-ottimizzate */
             .kl-table th, 
@@ -68,7 +69,7 @@
                 flex-shrink: 0;
             }
             .team-name span {
-                font-size: 0.72rem !important; /* Dimensione ideale per far entrare scritte lunghe come "KING LIONS FC" */
+                font-size: 0.72rem !important; /* Dimensione ideale per far entrare scritte lunghe */
                 white-space: nowrap !important; /* Vieta categoricamente di andare a capo */
             }
             
@@ -113,6 +114,7 @@
                     <tr>
                         <th>POS</th>
                         <th style="text-align: left; padding-left: 5px;">TEAM</th>
+                        <th>G</th>
                         <th>V</th>
                         <th>S</th>
                         <th>VS</th>
@@ -122,12 +124,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="pos-semi team-kinglions">
+                    <tr class="pos-semi team-calabroni">
                         <td class="pos-num">1</td>
+                        <td class="team-name">
+                            <img src="calabroni.png" alt="">
+                            <span>CALABRONI FC</span>
+                        </td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>+8</td>
+                        <td class="pt-val">8</td>
+                    </tr>
+                    <tr class="pos-semi team-kinglions">
+                        <td class="pos-num">2</td>
                         <td class="team-name">
                             <img src="king-lions.png" alt="">
                             <span>KING LIONS FC</span>
                         </td>
+                        <td>3</td>
                         <td>2</td>
                         <td>0</td>
                         <td>0</td>
@@ -135,57 +152,47 @@
                         <td>+10</td>
                         <td class="pt-val">7</td>
                     </tr>
-                    <tr class="pos-semi team-calabroni">
-                        <td class="pos-num">2</td>
+                    <tr class="pos-quarti team-birrareal">
+                        <td class="pos-num">3</td>
                         <td class="team-name">
-                            <img src="calabroni.png" alt="">
-                            <span>CALABRONI FC</span>
+                            <img src="birrareal.png" alt="">
+                            <span>FC BIRRAREAL</span>
                         </td>
+                        <td>3</td>
+                        <td>1</td>
+                        <td>1</td>
                         <td>1</td>
                         <td>0</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>+1</td>
+                        <td>+3</td>
                         <td class="pt-val">5</td>
                     </tr>
                     <tr class="pos-quarti team-grizzly">
-                        <td class="pos-num">3</td>
+                        <td class="pos-num">4</td>
                         <td class="team-name">
                             <img src="grizzly.png" alt="">
                             <span>GRIZZLY FC</span>
                         </td>
+                        <td>3</td>
+                        <td>1</td>
                         <td>1</td>
                         <td>0</td>
-                        <td>0</td>
                         <td>1</td>
-                        <td>+6</td>
+                        <td>-1</td>
                         <td class="pt-val">4</td>
                     </tr>
                     <tr class="pos-quarti team-darkknights">
-                        <td class="pos-num">4</td>
+                        <td class="pos-num">5</td>
                         <td class="team-name">
                             <img src="dark-knights.png" alt="">
                             <span>DARK KNIGHTS</span>
                         </td>
+                        <td>3</td>
                         <td>1</td>
-                        <td>1</td>
+                        <td>2</td>
                         <td>0</td>
                         <td>0</td>
-                        <td>-8</td>
+                        <td>-12</td>
                         <td class="pt-val">3</td>
-                    </tr>
-                    <tr class="pos-quarti team-birrareal">
-                        <td class="pos-num">5</td>
-                        <td class="team-name">
-                            <img src="birrareal.png" alt="">
-                            <span>BIRRAREAL FC</span>
-                        </td>
-                        <td>0</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>-1</td>
-                        <td class="pt-val">1</td>
                     </tr>
                     <tr class="pos-quarti team-polar">
                         <td class="pos-num">6</td>
@@ -193,8 +200,9 @@
                             <img src="polar.png" alt="">
                             <span>POLAR FC</span>
                         </td>
+                        <td>3</td>
                         <td>0</td>
-                        <td>2</td>
+                        <td>3</td>
                         <td>0</td>
                         <td>0</td>
                         <td>-8</td>
@@ -219,4 +227,5 @@
         });
     </script>
 </body>
-</html>
+                                </html>
+                                
