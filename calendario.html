@@ -19,8 +19,7 @@
             border-radius: 12px;
             padding: 25px;
             margin-bottom: 35px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-        }
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);\n        }
         
         .cal-giornata h3 {
             color: #ffa800; /* Oro */
@@ -35,119 +34,91 @@
         }
         
         .match-block {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
             margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #222;
         }
         
         .match-block:last-child {
             margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
         }
         
         .match-date {
-            font-size: 0.9rem;
-            color: #ffa800;
-            font-weight: 700;
-            padding-left: 5px;
-            text-align: left;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
         
         .match-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 12px 20px;
-            border-radius: 8px;
-            gap: 15px;
-        }
-        
-        .match-row:nth-child(even) {
-            background: rgba(255, 255, 255, 0.01);
         }
         
         .cal-team {
+            flex: 1;
             display: flex;
             align-items: center;
-            gap: 14px;
-            flex: 1;
-            white-space: nowrap;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
         
         .cal-team.home {
-            justify-content: flex-start;
-            text-align: left;
-        }
-        
-        .cal-team.away {
             justify-content: flex-end;
             text-align: right;
         }
         
-        .cal-team img {
-            height: 36px;
-            width: 36px;
-            object-fit: contain;
-            display: inline-block;
-            vertical-align: middle;
+        .cal-team.away {
+            justify-content: flex-start;
+            text-align: left;
         }
         
-        .cal-team span {
-            font-size: 1.05rem;
-            font-weight: 800;
-            color: #ffffff !important;
-            letter-spacing: 0.5px;
+        .cal-team img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+        
+        .cal-team.home img {
+            margin-left: 15px;
+        }
+        
+        .cal-team.away img {
+            margin-right: 15px;
         }
         
         .match-vs {
-            color: #ffa800;
+            background-color: #ffa800;
+            color: #000;
             font-weight: 900;
-            font-size: 1.05rem;
-            background: #0d0d0d;
-            padding: 5px 14px;
+            padding: 4px 12px;
             border-radius: 6px;
-            min-width: 55px;
+            font-size: 0.9rem;
+            margin: 0 20px;
+            min-width: 45px;
             text-align: center;
-            border: 1px solid #222;
+            box-shadow: 0 2px 8px rgba(255, 168, 0, 0.3);
         }
-
-        /* REGOLE CHIARE E RIGIDE SOLO PER SMARTPHONE (SOTTO I 768px) */
-        @media screen and (max-width: 768px) {
-            .cal-container {
-                margin: 20px auto;
-                padding: 0 10px;
-            }
-            .cal-giornata {
-                padding: 15px 10px;
-                margin-bottom: 20px;
-            }
-            .cal-giornata h3 {
-                font-size: 1.2rem;
-                margin-bottom: 12px;
-            }
-            .match-row {
-                padding: 10px 8px;
-                gap: 5px;
-            }
+        
+        /* Responsive */
+        @media (max-width: 576px) {
             .cal-team {
-                gap: 6px;
+                font-size: 0.9rem;
             }
             .cal-team img {
-                height: 26px;
                 width: 26px;
-            }
-            .cal-team span {
-                font-size: 0.76rem;
-                letter-spacing: 0;
+                height: 26px;
             }
             .match-vs {
+                margin: 0 10px;
+                padding: 3px 8px;
                 font-size: 0.8rem;
-                padding: 4px 8px;
-                min-width: 40px;
-            }
-            .match-date {
-                font-size: 0.78rem;
             }
         }
     </style>
@@ -180,105 +151,102 @@
 
     <div class="cal-container">
         <h1 class="kl-main-title">CALENDARIO TORNEO</h1>
-        
-        <div class="cal-giornata">
-            <h3>GIORNATA 3</h3>
-            
-            <div class="match-block">
-                <div class="match-date">Mercoledì, 17 Giugno 2026 | 17.00 PM</div>
-                <div class="match-row">
-                    <div class="cal-team home">
-                        <img src="king-lions.png" alt=""> <span>KING LIONS FC</span>
-                    </div>
-                    <div class="match-vs">VS</div>
-                    <div class="cal-team away">
-                        <span>POLAR FC</span> <img src="polar.png" alt="">
-                    </div>
-                </div>
-            </div>
-
-            <div class="match-block">
-                <div class="match-date">Mercoledì, 17 Giugno 2026 | 18.00 PM</div>
-                <div class="match-row">
-                    <div class="cal-team home">
-                        <img src="grizzly.png" alt=""> <span>GRIZZLY FC</span>
-                    </div>
-                    <div class="match-vs">VS</div>
-                    <div class="cal-team away">
-                        <span>CALABRONI FC</span> <img src="calabroni.png" alt="">
-                    </div>
-                </div>
-            </div>
-
-            <div class="match-block">
-                <div class="match-date">Giovedì, 18 Giugno 2026 | 18.00 PM</div>
-                <div class="match-row">
-                    <div class="cal-team home">
-                        <img src="birrareal.png" alt=""> <span>FC BIRRAREAL</span>
-                    </div>
-                    <div class="match-vs">VS</div>
-                    <div class="cal-team away">
-                        <span>DARK KNIGHTS</span> <img src="dark-knights.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="cal-giornata">
-            <h3>GIORNATA 2</h3>
-            
+            <h3>1ª Giornata</h3>
             <div class="match-block">
-                <div class="match-date">Giovedì, 11 Giugno 2026 | 17.00 PM</div>
+                <div class="match-date">Lunedì, 1 Giugno 2026 | 18.00 PM</div>
                 <div class="match-row">
                     <div class="cal-team home">
-                        <img src="polar.png" alt=""> <span>POLAR FC</span>
-                    </div>
-                    <div class="match-vs">VS</div>
-                    <div class="cal-team away">
                         <span>GRIZZLY FC</span> <img src="grizzly.png" alt="">
                     </div>
+                    <div class="match-vs">VS</div>
+                    <div class="cal-team away">
+                        <img src="dark-knights.png" alt=""> <span>DARK KNIGHTS</span>
+                    </div>
                 </div>
             </div>
 
             <div class="match-block">
-                <div class="match-date">Venerdì, 12 Giugno 2026 | 17.00 PM</div>
+                <div class="match-date">Lunedì, 1 Giugno 2026 | 19.00 PM</div>
                 <div class="match-row">
                     <div class="cal-team home">
+                        <span>BIRRAREAL FC</span> <img src="birrareal.png" alt="">
+                    </div>
+                    <div class="match-vs">VS</div>
+                    <div class="cal-team away">
                         <img src="king-lions.png" alt=""> <span>KING LIONS FC</span>
                     </div>
-                    <div class="match-vs">VS</div>
-                    <div class="cal-team away">
-                        <span>DARK KNIGHTS</span> <img src="dark-knights.png" alt="">
-                    </div>
                 </div>
             </div>
 
             <div class="match-block">
-                <div class="match-date">Venerdì, 12 Giugno 2026 | 18.00 PM</div>
+                <div class="match-date">Lunedì, 1 Giugno 2026 | 20.00 PM</div>
                 <div class="match-row">
                     <div class="cal-team home">
-                        <img src="calabroni.png" alt=""> <span>CALABRONI FC</span>
+                        <span>POLAR FC</span> <img src="polar.png" alt="">
                     </div>
                     <div class="match-vs">VS</div>
                     <div class="cal-team away">
-                        <span>FC BIRRAREAL</span> <img src="birrareal.png" alt="">
+                        <img src="calabroni.png" alt=""> <span>CALABRONI FC</span>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="cal-giornata">
-            <h3>GIORNATA 1</h3>
-            
+            <h3>2ª Giornata</h3>
+            <div class="match-block">
+                <div class="match-date">Giovedì, 4 Giugno 2026 | 18.00 PM</div>
+                <div class="match-row">
+                    <div class="cal-team home">
+                        <span>CALABRONI FC</span> <img src="calabroni.png" alt="">
+                    </div>
+                    <div class="match-vs">VS</div>
+                    <div class="cal-team away">
+                        <img src="birrareal.png" alt=""> <span>BIRRAREAL FC</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="match-block">
+                <div class="match-date">Giovedì, 4 Giugno 2026 | 19.00 PM</div>
+                <div class="match-row">
+                    <div class="cal-team home">
+                        <span>KING LIONS FC</span> <img src="king-lions.png" alt="">
+                    </div>
+                    <div class="match-vs">VS</div>
+                    <div class="cal-team away">
+                        <img src="grizzly.png" alt=""> <span>GRIZZLY FC</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="match-block">
+                <div class="match-date">Giovedì, 4 Giugno 2026 | 20.00 PM</div>
+                <div class="match-row">
+                    <div class="cal-team home">
+                        <span>DARK KNIGHTS</span> <img src="dark-knights.png" alt="">
+                    </div>
+                    <div class="match-vs">VS</div>
+                    <div class="cal-team away">
+                        <img src="polar.png" alt=""> <span>POLAR FC</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cal-giornata">
+            <h3>3ª Giornata</h3>
             <div class="match-block">
                 <div class="match-date">Martedì, 9 Giugno 2026 | 17.00 PM</div>
                 <div class="match-row">
                     <div class="cal-team home">
-                        <img src="birrareal.png" alt=""> <span>FC BIRRAREAL</span>
+                        <span>BIRRAREAL FC</span> <img src="birrareal.png" alt="">
                     </div>
                     <div class="match-vs">VS</div>
                     <div class="cal-team away">
-                        <span>GRIZZLY FC</span> <img src="grizzly.png" alt="">
+                        <img src="grizzly.png" alt=""> <span>GRIZZLY FC</span>
                     </div>
                 </div>
             </div>
@@ -287,11 +255,11 @@
                 <div class="match-date">Martedì, 9 Giugno 2026 | 18.00 PM</div>
                 <div class="match-row">
                     <div class="cal-team home">
-                        <img src="dark-knights.png" alt=""> <span>DARK KNIGHTS</span>
+                        <span>DARK KNIGHTS</span> <img src="dark-knights.png" alt="">
                     </div>
                     <div class="match-vs">VS</div>
                     <div class="cal-team away">
-                        <span>POLAR FC</span> <img src="polar.png" alt="">
+                        <img src="polar.png" alt=""> <span>POLAR FC</span>
                     </div>
                 </div>
             </div>
@@ -300,11 +268,53 @@
                 <div class="match-date">Martedì, 9 Giugno 2026 | 19.00 PM</div>
                 <div class="match-row">
                     <div class="cal-team home">
-                        <img src="calabroni.png" alt=""> <span>CALABRONI FC</span>
+                        <span>CALABRONI FC</span> <img src="calabroni.png" alt="">
                     </div>
                     <div class="match-vs">VS</div>
                     <div class="cal-team away">
+                        <img src="king-lions.png" alt=""> <span>KING LIONS FC</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cal-giornata">
+            <h3>4ª Giornata</h3>
+            <div class="match-block">
+                <div class="match-date">Venerdì, 12 Giugno 2026 | 17.00 PM</div>
+                <div class="match-row">
+                    <div class="cal-team home">
+                        <span>POLAR FC</span> <img src="polar.png" alt="">
+                    </div>
+                    <div class="match-vs">VS</div>
+                    <div class="cal-team away">
+                        <img src="grizzly.png" alt=""> <span>GRIZZLY FC</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="match-block">
+                <div class="match-date">Venerdì, 12 Giugno 2026 | 18.00 PM</div>
+                <div class="match-row">
+                    <div class="cal-team home">
                         <span>KING LIONS FC</span> <img src="king-lions.png" alt="">
+                    </div>
+                    <div class="match-vs">VS</div>
+                    <div class="cal-team away">
+                        <img src="dark-knights.png" alt=""> <span>DARK KNIGHTS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="match-block">
+                <div class="match-date">Venerdì, 12 Giugno 2026 | 19.00 PM</div>
+                <div class="match-row">
+                    <div class="cal-team home">
+                        <span>CALABRONI FC</span> <img src="calabroni.png" alt="">
+                    </div>
+                    <div class="match-vs">VS</div>
+                    <div class="cal-team away">
+                        <img src="birrareal.png" alt=""> <span>BIRRAREAL FC</span>
                     </div>
                 </div>
             </div>
