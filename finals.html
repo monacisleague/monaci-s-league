@@ -8,9 +8,10 @@
     <style>
         :root {
             --gold: #ffcc00;
-            --blue-sky: #0055df;
-            --dark-box: #1c1c1c;
+            --bg-dark: #141414;
+            --box-bg: #1c1c1c;
             --border-color: #333;
+            --text-muted: #888;
         }
 
         .finals-container {
@@ -29,87 +30,91 @@
             letter-spacing: 2px;
         }
 
-        /* STRUTTURA AD ALBERO ORIZZONTALE (STILE SKY SPORT) */
+        /* TABELLONE AD ALBERO SVILUPPATO IN ORIZZONTALE */
         .bracket-tournament {
             display: flex;
             align-items: center;
             justify-content: space-between;
             position: relative;
             gap: 20px;
-            margin-bottom: 60px;
         }
 
         .bracket-column {
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-            height: 450px;
+            height: 600px;
+            width: 30%;
             position: relative;
             z-index: 2;
         }
 
-        /* Larghezze colonne bilanciate */
-        .col-quarti { width: 25%; }
-        .col-semi { width: 25%; }
-        .col-final { width: 25%; }
-
-        /* BLOCCO MATCH (STILE SKY SPORT) */
-        .sky-match {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            background: var(--blue-sky);
-            border-radius: 4px;
+        /* BLOCCO MATCH (STILE WINNER PRO CON COLORI SITO) */
+        .match-card {
+            background: var(--box-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.6);
-            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            width: 100%;
         }
 
-        /* Varianti colore per i seed alti inseriti direttamente nei turni avanzati */
-        .sky-match.seed-high {
-            background: #b00000; /* Rosso come nell'immagine per le teste di serie */
-        }
-
-        .sky-row {
+        .match-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 12px;
-            height: 45px;
+            padding: 12px 15px;
+            height: 50px;
             box-sizing: border-box;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .sky-row:first-child {
-            border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+        .match-row:last-child {
+            border-bottom: none;
         }
 
-        .sky-team-info {
+        .team-details {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             color: #fff;
-            font-weight: 800;
+            font-weight: 700;
             font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
-        .sky-seed {
-            color: var(--gold);
+        .team-details img {
+            width: 26px;
+            height: 26px;
+            object-fit: contain;
+        }
+
+        .team-details .placeholder-icon {
+            width: 26px;
+            height: 26px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #aaa;
+            font-weight: bold;
+        }
+
+        .status-info {
             font-size: 0.75rem;
-            background: rgba(0,0,0,0.4);
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-weight: 900;
+            color: var(--text-muted);
+            font-style: italic;
+            font-weight: 600;
         }
 
-        /* INPUT RIGIDI PER RISULTATI */
-        .sky-score {
-            width: 40px;
-            height: 28px;
-            background: rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #fff;
+        /* INPUT RISULTATI INTEGRATO RIGIDO */
+        .score-box {
+            width: 42px;
+            height: 30px;
+            background: #000;
+            border: 1px solid #444;
+            color: var(--gold);
             text-align: center;
             font-weight: 900;
             font-size: 1.1rem;
@@ -117,13 +122,12 @@
             outline: none;
         }
 
-        .sky-score:focus {
+        .score-box:focus {
             border-color: var(--gold);
-            background: #000;
         }
 
-        /* LINEE DI COLLEGAMENTO IN SVG */
-        .bracket-connector {
+        /* LINEE DI COLLEGAMENTO GRAFICO SVG */
+        .bracket-svg-lines {
             position: absolute;
             top: 0;
             left: 0;
@@ -133,40 +137,14 @@
             z-index: 1;
         }
 
-        .bracket-connector path {
+        .bracket-svg-lines path {
             fill: none;
             stroke: #444;
             stroke-width: 2px;
         }
 
-        /* SEZIONE FINALE TERZO E QUARTO POSTO SFALSATA IN BASSO */
-        .loser-final-wrapper {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 2px solid #222;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .loser-title {
-            color: #888;
-            font-size: 1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-
-        .loser-final-wrapper .sky-match {
-            width: 100%;
-            max-width: 320px;
-            background: #333; /* Colore neutro per la finalina */
-        }
-
-
-        /* RESPONSIVE TOTALE (SMARTPHONE) */
-        @media screen and (max-width: 850px) {
+        /* RESPONSIVE SMARTPHONE */
+        @media screen and (max-width: 900px) {
             .bracket-tournament {
                 flex-direction: column;
                 height: auto;
@@ -174,30 +152,25 @@
             }
 
             .bracket-column {
-                width: 100% !important;
+                width: 100%;
                 height: auto;
-                gap: 20px;
+                gap: 25px;
             }
 
-            /* Nasconde i connettori grafici su mobile per evitare sovrapposizioni brutte */
-            .bracket-connector {
+            .bracket-svg-lines {
                 display: none;
             }
 
             .bracket-column::before {
-                content: attr(data-round);
+                content: attr(data-label);
                 color: var(--gold);
-                font-weight: 900;
+                font-weight: 800;
                 text-transform: uppercase;
                 font-size: 1.1rem;
                 border-left: 3px solid var(--gold);
                 padding-left: 10px;
-                margin-bottom: 10px;
+                margin-bottom: 5px;
                 display: block;
-            }
-            
-            .loser-final-wrapper {
-                margin-top: 40px;
             }
         }
     </style>
@@ -226,148 +199,172 @@
     </header>
 
     <div class="finals-container">
-        <h1 class="finals-title">Tabellone Finals</h1>
+        <h1 class="finals-title">Fase Finale</h1>
 
         <div class="bracket-tournament">
             
-            <!-- SVG LINEE DI COLLEGAMENTO (Si adattano dinamicamente via coordinate percentuali) -->
-            <svg class="bracket-connector">
-                <!-- Dai Quarti alle Semifinali -->
-                <path d="M 25,112.5 L 37.5,112.5 L 37.5,168.75 L 50,168.75" />
-                <path d="M 25,337.5 L 37.5,337.5 L 37.5,393.75 L 50,393.75" />
-                
-                <!-- Dalle Semifinali alla Finalissima -->
-                <path d="M 50,112.5 L 62.5,112.5 L 62.5,225 L 75,225" />
-                <path d="M 50,337.5 L 62.5,337.5 L 62.5,225 L 75,225" />
+            <!-- SVG Connettori Grafici ad Albero -->
+            <svg class="bracket-svg-lines">
+                <!-- Quarti -> Semifinali -->
+                <path d="M 30,150 L 47,150 L 47,100 L 65,100" />
+                <path d="M 30,450 L 47,450 L 47,500 L 65,500" />
+                <!-- Semifinali -> Finali -->
+                <path d="M 65,100 L 82,100 L 82,200 L 100,200" />
+                <path d="M 65,500 L 82,500 L 82,400 L 100,400" />
             </svg>
 
-            <!-- COLONNA 1: QUARTI DI FINALE -->
-            <div class="bracket-column col-quarti" data-round="Quarti di Finale">
+            <!-- COLONNA 1: QUARTI DI FINALE (+ ESENZIONI) -->
+            <div class="bracket-column" data-label="Quarti di Finale">
                 
-                <!-- Quarto 1: 3ª vs 6ª -->
-                <div class="sky-match">
-                    <div class="sky-row">
-                        <div class="sky-team-info">
-                            <span class="sky-seed">3ª</span>
-                            <span>Da Definire</span>
+                <!-- Esenzione Alta -->
+                <div class="match-card">
+                    <div class="match-row" style="background: rgba(255,204,0,0.02);">
+                        <div class="team-details">
+                            <img src="calabroni.png" alt="">
+                            <span>Calabroni FC</span>
                         </div>
-                        <input type="number" class="sky-score" min="0" placeholder="-">
-                    </div>
-                    <div class="sky-row">
-                        <div class="sky-team-info">
-                            <span class="sky-seed">6ª</span>
-                            <span>Da Definire</span>
-                        </div>
-                        <input type="number" class="sky-score" min="0" placeholder="-">
+                        <span class="status-info">Esenzione</span>
                     </div>
                 </div>
 
-                <!-- Quarto 2: 4ª vs 5ª -->
-                <div class="sky-match">
-                    <div class="sky-row">
-                        <div class="sky-team-info">
-                            <span class="sky-seed">4ª</span>
-                            <span>Da Definire</span>
+                <!-- Quarto 1 Rigido -->
+                <div class="match-card">
+                    <div class="match-row">
+                        <div class="team-details">
+                            <img src="dark-knights.png" alt="">
+                            <span>Dark Knights</span>
                         </div>
-                        <input type="number" class="sky-score" min="0" placeholder="-">
+                        <input type="number" class="score-box" min="0" placeholder="-">
                     </div>
-                    <div class="sky-row">
-                        <div class="sky-team-info">
-                            <span class="sky-seed">5ª</span>
-                            <span>Da Definire</span>
+                    <div class="match-row">
+                        <div class="team-details">
+                            <img src="grizzly.png" alt="">
+                            <span>Grizzly FC</span>
                         </div>
-                        <input type="number" class="sky-score" min="0" placeholder="-">
+                        <input type="number" class="score-box" min="0" placeholder="-">
+                    </div>
+                </div>
+
+                <!-- Esenzione Bassa -->
+                <div class="match-card">
+                    <div class="match-row" style="background: rgba(255,204,0,0.02);">
+                        <div class="team-details">
+                            <img src="king-lions.png" alt="">
+                            <span>King Lions FC</span>
+                        </div>
+                        <span class="status-info">Esenzione</span>
+                    </div>
+                </div>
+
+                <!-- Quarto 2 Rigido -->
+                <div class="match-card">
+                    <div class="match-row">
+                        <div class="team-details">
+                            <img src="birrareal.png" alt="">
+                            <span>FC Birrareal</span>
+                        </div>
+                        <input type="number" class="score-box" min="0" placeholder="-">
+                    </div>
+                    <div class="match-row">
+                        <div class="team-details">
+                            <img src="polar.png" alt="">
+                            <span>Polar FC</span>
+                        </div>
+                        <input type="number" class="score-box" min="0" placeholder="-">
                     </div>
                 </div>
 
             </div>
 
             <!-- COLONNA 2: SEMIFINALI -->
-            <div class="bracket-column col-semi" data-round="Semifinali">
+            <div class="bracket-column" data-label="Semifinali">
                 
-                <!-- Semi 1: 2ª vs Vincente Quarto 1 -->
-                <div class="sky-match">
-                    <div class="sky-row" style="background: rgba(176, 0, 0, 0.4);">
-                        <div class="sky-team-info">
-                            <span class="sky-seed">2ª</span>
-                            <span>Da Definire</span>
+                <!-- Semifinale Alta -->
+                <div class="match-card">
+                    <div class="match-row">
+                        <div class="team-details">
+                            <img src="calabroni.png" alt="">
+                            <span>Calabroni FC</span>
                         </div>
-                        <input type="number" class="sky-score" min="0" placeholder="-">
+                        <input type="number" class="score-box" min="0" placeholder="-">
                     </div>
-                    <div class="sky-row">
-                        <div class="sky-team-info">
-                            <span class="sky-seed">Q1</span>
-                            <span style="font-size:0.8rem; color:#aaa;">Vincente 3ª/6ª</span>
+                    <div class="match-row">
+                        <div class="team-details">
+                            <div class="placeholder-icon">?</div>
+                            <span style="color: var(--text-muted);">Sconosciuto</span>
                         </div>
-                        <input type="number" class="sky-score" min="0" placeholder="-">
+                        <input type="number" class="score-box" min="0" placeholder="-">
                     </div>
                 </div>
 
-                <!-- Semi 2: 1ª vs Vincente Quarto 2 -->
-                <div class="sky-match">
-                    <div class="sky-row" style="background: rgba(176, 0, 0, 0.4);">
-                        <div class="sky-team-info">
-                            <span class="sky-seed">1ª</span>
-                            <span>Da Definire</span>
+                <!-- Semifinale Bassa -->
+                <div class="match-card">
+                    <div class="match-row">
+                        <div class="team-details">
+                            <img src="king-lions.png" alt="">
+                            <span>King Lions FC</span>
                         </div>
-                        <input type="number" class="sky-score" min="0" placeholder="-">
+                        <input type="number" class="score-box" min="0" placeholder="-">
                     </div>
-                    <div class="sky-row">
-                        <div class="sky-team-info">
-                            <span class="sky-seed">Q2</span>
-                            <span style="font-size:0.8rem; color:#aaa;">Vincente 4ª/5ª</span>
+                    <div class="match-row">
+                        <div class="team-details">
+                            <div class="placeholder-icon">?</div>
+                            <span style="color: var(--text-muted);">Sconosciuto</span>
                         </div>
-                        <input type="number" class="sky-score" min="0" placeholder="-">
+                        <input type="number" class="score-box" min="0" placeholder="-">
                     </div>
                 </div>
 
             </div>
 
-            <!-- COLONNA 3: FINALISSIMA -->
-            <div class="bracket-column col-final" data-round="Finale 1°/2° Posto">
+            <!-- COLONNA 3: FINALI -->
+            <div class="bracket-column" data-label="Finali">
                 
-                <!-- Finale 1° e 2° Posto -->
-                <div class="sky-match" style="border: 1px solid var(--gold);">
-                    <div class="sky-row" style="background: #000; padding: 4px 12px; height: 24px; justify-content: center;">
-                        <span style="color: var(--gold); font-size: 0.7rem; font-weight: 900; letter-spacing: 1px;">FINALE 1°/2° POSTO</span>
+                <!-- Finale 1° / 2° Posto -->
+                <div class="match-card" style="border: 1px solid var(--gold);">
+                    <div class="match-row" style="background: rgba(255, 204, 0, 0.1); height: 30px; justify-content: center;">
+                        <span style="color: var(--gold); font-size: 0.75rem; font-weight: 900; letter-spacing: 1px;">FINALE 1°/2° POSTO</span>
                     </div>
-                    <div class="sky-row">
-                        <div class="sky-team-info">
-                            <span>Vincente S1</span>
+                    <div class="match-row">
+                        <div class="team-details">
+                            <div class="placeholder-icon">?</div>
+                            <span>Sconosciuto</span>
                         </div>
-                        <input type="number" class="sky-score" min="0" placeholder="-">
+                        <input type="number" class="score-box" min="0" placeholder="-">
                     </div>
-                    <div class="sky-row">
-                        <div class="sky-team-info">
-                            <span>Vincente S2</span>
+                    <div class="match-row">
+                        <div class="team-details">
+                            <div class="placeholder-icon">?</div>
+                            <span>Sconosciuto</span>
                         </div>
-                        <input type="number" class="sky-score" min="0" placeholder="-">
+                        <input type="number" class="score-box" min="0" placeholder="-">
+                    </div>
+                </div>
+
+                <!-- Finale 3° / 4° Posto -->
+                <div class="match-card">
+                    <div class="match-row" style="background: rgba(255, 255, 255, 0.05); height: 30px; justify-content: center;">
+                        <span style="color: #aaa; font-size: 0.75rem; font-weight: 900; letter-spacing: 1px;">FINALE 3°/4° POSTO</span>
+                    </div>
+                    <div class="match-row">
+                        <div class="team-details">
+                            <div class="placeholder-icon">?</div>
+                            <span style="color: var(--text-muted);">Sconosciuto</span>
+                        </div>
+                        <input type="number" class="score-box" min="0" placeholder="-">
+                    </div>
+                    <div class="match-row">
+                        <div class="team-details">
+                            <div class="placeholder-icon">?</div>
+                            <span style="color: var(--text-muted);">Sconosciuto</span>
+                        </div>
+                        <input type="number" class="score-box" min="0" placeholder="-">
                     </div>
                 </div>
 
             </div>
 
         </div>
-
-        <!-- SEZIONE STACCATA IN BASSO: FINALE 3°/4° POSTO -->
-        <div class="loser-final-wrapper">
-            <div class="loser-title">Finale 3° - 4° Posto</div>
-            <div class="sky-match">
-                <div class="sky-row">
-                    <div class="sky-team-info">
-                        <span style="color:#aaa;">Perdente S1</span>
-                    </div>
-                    <input type="number" class="sky-score" min="0" placeholder="-">
-                </div>
-                <div class="sky-row">
-                    <div class="sky-team-info">
-                        <span style="color:#aaa;">Perdente S2</span>
-                    </div>
-                    <input type="number" class="sky-score" min="0" placeholder="-">
-                </div>
-            </div>
-        </div>
-
     </div>
 
     <script>
