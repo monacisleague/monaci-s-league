@@ -25,21 +25,33 @@
             font-size: 2.5rem;
             font-weight: 800;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        /* INTESTAZIONI COLONNE */
-        .bracket-headers {
+        /* STRUTTURA TABELLONE COERENTE (PC E MOBILE CON SWIPE) */
+        .bracket-scroll-area {
+            overflow-x: auto; /* Permette lo swipe orizzontale perfetto su smartphone */
+            padding-bottom: 20px;
+        }
+
+        .bracket-tournament {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 15px;
-            padding: 0 10px;
+            min-width: 850px; /* Forzato per mantenere l'orizzontalità fissa ovunque */
+            gap: 30px;
+        }
+
+        .bracket-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 650px;
+            width: 31%;
         }
 
         .column-title {
-            width: 30%;
             color: var(--gold);
             font-size: 1.1rem;
             font-weight: 800;
@@ -48,28 +60,10 @@
             text-align: center;
             border-bottom: 2px solid var(--border-color);
             padding-bottom: 8px;
+            margin-bottom: 20px;
         }
 
-        /* TABELLONE AD ALBERO SVILUPPATO IN ORIZZONTALE */
-        .bracket-tournament {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            gap: 20px;
-        }
-
-        .bracket-column {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 620px;
-            width: 30%;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* BLOCCO MATCH (STILE WINNER PRO CON COLORI SITO) */
+        /* STRUTTURA DELLE BOX DEI MATCH */
         .match-card {
             background: var(--box-bg);
             border: 1px solid var(--border-color);
@@ -77,18 +71,6 @@
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             width: 100%;
-        }
-
-        /* Variante box esenzione */
-        .match-card.esenzione-box {
-            background: rgba(255, 204, 0, 0.03);
-            border: 1px dashed rgba(255, 204, 0, 0.2);
-            text-align: center;
-            padding: 10px;
-            color: var(--text-muted);
-            font-style: italic;
-            font-weight: bold;
-            font-size: 0.85rem;
         }
 
         .match-row {
@@ -103,6 +85,18 @@
 
         .match-row:last-child {
             border-bottom: none;
+        }
+
+        /* Etichetta Interna Esenzione */
+        .esenzione-label {
+            background: rgba(255, 204, 0, 0.1);
+            color: var(--gold);
+            font-size: 0.7rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
         }
 
         .team-details {
@@ -133,8 +127,8 @@
             font-weight: bold;
         }
 
-        /* INPUT RISULTATI INTEGRATO RIGIDO */
-        .score-box {
+        /* NUMERO RISULTATO FISSO DEL SITO */
+        .score-display {
             width: 42px;
             height: 30px;
             background: #000;
@@ -144,64 +138,7 @@
             font-weight: 900;
             font-size: 1.1rem;
             border-radius: 4px;
-            outline: none;
-        }
-
-        .score-box:focus {
-            border-color: var(--gold);
-        }
-
-        /* LINEE DI COLLEGAMENTO GRAFICO SVG MARCATISSIME */
-        .bracket-svg-lines {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .bracket-svg-lines path {
-            fill: none;
-            stroke: var(--gold);
-            stroke-width: 2.5px;
-            stroke-linecap: round;
-        }
-
-        /* RESPONSIVE SMARTPHONE */
-        @media screen and (max-width: 900px) {
-            .bracket-headers {
-                display: none;
-            }
-
-            .bracket-tournament {
-                flex-direction: column;
-                height: auto;
-                gap: 40px;
-            }
-
-            .bracket-column {
-                width: 100%;
-                height: auto;
-                gap: 20px;
-            }
-
-            .bracket-svg-lines {
-                display: none;
-            }
-
-            .bracket-column::before {
-                content: attr(data-label);
-                color: var(--gold);
-                font-weight: 900;
-                text-transform: uppercase;
-                font-size: 1.2rem;
-                border-left: 4px solid var(--gold);
-                padding-left: 10px;
-                margin-bottom: 15px;
-                display: block;
-            }
+            line-height: 28px;
         }
     </style>
 </head>
@@ -231,192 +168,169 @@
     <div class="finals-container">
         <h1 class="finals-title">Fase Finale</h1>
 
-        <!-- Intestazioni colonne visibili solo su PC -->
-        <div class="bracket-headers">
-            <div class="column-title">Quarti di Finale</div>
-            <div class="column-title">Semifinali</div>
-            <div class="column-title">Finali</div>
-        </div>
+        <div class="bracket-scroll-area">
+            <div class="bracket-tournament">
 
-        <div class="bracket-tournament">
-            
-            <!-- SVG Connettori Grafici ad Albero (Frecce/Linee) -->
-            <svg class="bracket-svg-lines" viewBox="0 0 1000 620" preserveAspectRatio="none">
-                <!-- Quarti Top -> Semifinale Top -->
-                <path d="M 300,185 L 490,185 L 490,110 L 680,110" />
-                <!-- Quarti Bottom -> Semifinale Bottom -->
-                <path d="M 300,505 L 490,505 L 490,480 L 680,480" />
-                
-                <!-- Semifinale Top -> Finale 1/2 Posto -->
-                <path d="M 640,110 L 810,110 L 810,210 L 680,210" style="display:none;" /> <!-- Hidden reset reference -->
-                <path d="M 650,110 L 810,110 L 810,215 L 680,215" />
-                <path d="M 650,480 L 810,480 L 810,265 L 680,265" />
-            </svg>
+                <div class="bracket-column">
+                    <div><div class="column-title">Quarti di Finale</div></div>
+                    
+                    <div class="match-card">
+                        <div class="match-row">
+                            <div class="team-details">
+                                <img src="calabroni.png" alt="">
+                                <span>Calabroni FC</span>
+                            </div>
+                            <span class="esenzione-label">Esenzione</span>
+                        </div>
+                        <div class="match-row">
+                            <div class="team-details">
+                                <div class="placeholder-icon">?</div>
+                                <span style="color: var(--text-muted);">Sconosciuto</span>
+                            </div>
+                            <div class="score-display">-</div>
+                        </div>
+                    </div>
 
-            <!-- COLONNA 1: QUARTI DI FINALE -->
-            <div class="bracket-column" data-label="Quarti di Finale">
-                
-                <!-- Testa di serie Alta -->
-                <div class="match-card">
-                    <div class="match-row">
-                        <div class="team-details">
-                            <img src="calabroni.png" alt="">
-                            <span>Calabroni FC</span>
+                    <div class="match-card">
+                        <div class="match-row">
+                            <div class="team-details">
+                                <img src="dark-knights.png" alt="">
+                                <span>Dark Knights</span>
+                            </div>
+                            <div class="score-display">-</div>
                         </div>
-                        <input type="number" class="score-box" min="0" placeholder="-">
+                        <div class="match-row">
+                            <div class="team-details">
+                                <img src="grizzly.png" alt="">
+                                <span>Grizzly FC</span>
+                            </div>
+                            <div class="score-display">-</div>
+                        </div>
                     </div>
-                </div>
-                <!-- Box Esenzione Sotto Calabroni -->
-                <div class="match-card esenzione-box">
-                    Esenzione
-                </div>
 
-                <!-- Quarto 1 Rigido -->
-                <div class="match-card">
-                    <div class="match-row">
-                        <div class="team-details">
-                            <img src="dark-knights.png" alt="">
-                            <span>Dark Knights</span>
+                    <div class="match-card">
+                        <div class="match-row">
+                            <div class="team-details">
+                                <img src="king-lions.png" alt="">
+                                <span>King Lions FC</span>
+                            </div>
+                            <span class="esenzione-label">Esenzione</span>
                         </div>
-                        <input type="number" class="score-box" min="0" placeholder="-">
-                    </div>
-                    <div class="match-row">
-                        <div class="team-details">
-                            <img src="grizzly.png" alt="">
-                            <span>Grizzly FC</span>
+                        <div class="match-row">
+                            <div class="team-details">
+                                <div class="placeholder-icon">?</div>
+                                <span style="color: var(--text-muted);">Sconosciuto</span>
+                            </div>
+                            <div class="score-display">-</div>
                         </div>
-                        <input type="number" class="score-box" min="0" placeholder="-">
                     </div>
-                </div>
 
-                <!-- Testa di serie Bassa -->
-                <div class="match-card">
-                    <div class="match-row">
-                        <div class="team-details">
-                            <img src="king-lions.png" alt="">
-                            <span>King Lions FC</span>
+                    <div class="match-card">
+                        <div class="match-row">
+                            <div class="team-details">
+                                <img src="birrareal.png" alt="">
+                                <span>FC Birrareal</span>
+                            </div>
+                            <div class="score-display">-</div>
                         </div>
-                        <input type="number" class="score-box" min="0" placeholder="-">
-                    </div>
-                </div>
-                <!-- Box Esenzione Sotto King Lions -->
-                <div class="match-card esenzione-box">
-                    Esenzione
-                </div>
-
-                <!-- Quarto 2 Rigido -->
-                <div class="match-card">
-                    <div class="match-row">
-                        <div class="team-details">
-                            <img src="birrareal.png" alt="">
-                            <span>FC Birrareal</span>
+                        <div class="match-row">
+                            <div class="team-details">
+                                <img src="polar.png" alt="">
+                                <span>Polar FC</span>
+                            </div>
+                            <div class="score-display">-</div>
                         </div>
-                        <input type="number" class="score-box" min="0" placeholder="-">
-                    </div>
-                    <div class="match-row">
-                        <div class="team-details">
-                            <img src="polar.png" alt="">
-                            <span>Polar FC</span>
-                        </div>
-                        <input type="number" class="score-box" min="0" placeholder="-">
                     </div>
                 </div>
 
-            </div>
-
-            <!-- COLONNA 2: SEMIFINALI -->
-            <div class="bracket-column" data-label="Semifinali">
-                
-                <!-- Semifinale Alta -->
-                <div class="match-card">
-                    <div class="match-row">
-                        <div class="team-details">
-                            <img src="calabroni.png" alt="">
-                            <span>Calabroni FC</span>
+                <div class="bracket-column">
+                    <div><div class="column-title">Semifinali</div></div>
+                    
+                    <div class="match-card">
+                        <div class="match-row">
+                            <div class="team-details">
+                                <img src="calabroni.png" alt="">
+                                <span>Calabroni FC</span>
+                            </div>
+                            <div class="score-display">-</div>
                         </div>
-                        <input type="number" class="score-box" min="0" placeholder="-">
+                        <div class="match-row">
+                            <div class="team-details">
+                                <div class="placeholder-icon">?</div>
+                                <span style="color: var(--text-muted);">Sconosciuto</span>
+                            </div>
+                            <div class="score-display">-</div>
+                        </div>
                     </div>
-                    <div class="match-row">
-                        <div class="team-details">
-                            <div class="placeholder-icon">?</div>
-                            <span style="color: var(--text-muted);">Sconosciuto</span>
+
+                    <div class="match-card">
+                        <div class="match-row">
+                            <div class="team-details">
+                                <img src="king-lions.png" alt="">
+                                <span>King Lions FC</span>
+                            </div>
+                            <div class="score-display">-</div>
                         </div>
-                        <input type="number" class="score-box" min="0" placeholder="-">
+                        <div class="match-row">
+                            <div class="team-details">
+                                <div class="placeholder-icon">?</div>
+                                <span style="color: var(--text-muted);">Sconosciuto</span>
+                            </div>
+                            <div class="score-display">-</div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Semifinale Bassa -->
-                <div class="match-card">
-                    <div class="match-row">
-                        <div class="team-details">
-                            <img src="king-lions.png" alt="">
-                            <span>King Lions FC</span>
+                <div class="bracket-column">
+                    <div><div class="column-title">Finali</div></div>
+                    
+                    <div class="match-card" style="border: 1px solid var(--gold); margin-top: 40px;">
+                        <div class="match-row" style="background: rgba(255, 204, 0, 0.1); height: 30px; justify-content: center;">
+                            <span style="color: var(--gold); font-size: 0.75rem; font-weight: 900; letter-spacing: 1px;">FINALE 1°/2° POSTO</span>
                         </div>
-                        <input type="number" class="score-box" min="0" placeholder="-">
-                    </div>
-                    <div class="match-row">
-                        <div class="team-details">
-                            <div class="placeholder-icon">?</div>
-                            <span style="color: var(--text-muted);">Sconosciuto</span>
+                        <div class="match-row">
+                            <div class="team-details">
+                                <div class="placeholder-icon">?</div>
+                                <span>Sconosciuto</span>
+                            </div>
+                            <div class="score-display">-</div>
                         </div>
-                        <input type="number" class="score-box" min="0" placeholder="-">
+                        <div class="match-row">
+                            <div class="team-details">
+                                <div class="placeholder-icon">?</div>
+                                <span>Sconosciuto</span>
+                            </div>
+                            <div class="score-display">-</div>
+                        </div>
                     </div>
-                </div>
 
-            </div>
-
-            <!-- COLONNA 3: FINALI -->
-            <div class="bracket-column" data-label="Finali">
-                
-                <!-- Finale 1° / 2° Posto -->
-                <div class="match-card" style="border: 1px solid var(--gold); margin-top: 50px;">
-                    <div class="match-row" style="background: rgba(255, 204, 0, 0.1); height: 30px; justify-content: center;">
-                        <span style="color: var(--gold); font-size: 0.75rem; font-weight: 900; letter-spacing: 1px;">FINALE 1°/2° POSTO</span>
-                    </div>
-                    <div class="match-row">
-                        <div class="team-details">
-                            <div class="placeholder-icon">?</div>
-                            <span>Sconosciuto</span>
+                    <div class="match-card" style="margin-bottom: 40px;">
+                        <div class="match-row" style="background: rgba(255, 255, 255, 0.05); height: 30px; justify-content: center;">
+                            <span style="color: #aaa; font-size: 0.75rem; font-weight: 900; letter-spacing: 1px;">FINALE 3°/4° POSTO</span>
                         </div>
-                        <input type="number" class="score-box" min="0" placeholder="-">
-                    </div>
-                    <div class="match-row">
-                        <div class="team-details">
-                            <div class="placeholder-icon">?</div>
-                            <span>Sconosciuto</span>
+                        <div class="match-row">
+                            <div class="team-details">
+                                <div class="placeholder-icon">?</div>
+                                <span style="color: var(--text-muted);">Sconosciuto</span>
+                            </div>
+                            <div class="score-display">-</div>
                         </div>
-                        <input type="number" class="score-box" min="0" placeholder="-">
-                    </div>
-                </div>
-
-                <!-- Finale 3° / 4° Posto -->
-                <div class="match-card" style="margin-bottom: 50px;">
-                    <div class="match-row" style="background: rgba(255, 255, 255, 0.05); height: 30px; justify-content: center;">
-                        <span style="color: #aaa; font-size: 0.75rem; font-weight: 900; letter-spacing: 1px;">FINALE 3°/4° POSTO</span>
-                    </div>
-                    <div class="match-row">
-                        <div class="team-details">
-                            <div class="placeholder-icon">?</div>
-                            <span style="color: var(--text-muted);">Sconosciuto</span>
+                        <div class="match-row">
+                            <div class="team-details">
+                                <div class="placeholder-icon">?</div>
+                                <span style="color: var(--text-muted);">Sconosciuto</span>
+                            </div>
+                            <div class="score-display">-</div>
                         </div>
-                        <input type="number" class="score-box" min="0" placeholder="-">
-                    </div>
-                    <div class="match-row">
-                        <div class="team-details">
-                            <div class="placeholder-icon">?</div>
-                            <span style="color: var(--text-muted);">Sconosciuto</span>
-                        </div>
-                        <input type="number" class="score-box" min="0" placeholder="-">
                     </div>
                 </div>
 
             </div>
-
         </div>
     </div>
 
     <script>
-        // Gestione Menu Mobile
+        // Gestione Menu Mobile Hamburger
         const hamburger = document.getElementById('hamburger-menu');
         const navMenu = document.getElementById('nav-links');
         hamburger.addEventListener('click', () => {
